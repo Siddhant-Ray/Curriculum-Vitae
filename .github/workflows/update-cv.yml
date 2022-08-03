@@ -16,3 +16,25 @@ jobs:
           run: |
             apk add make
             make all 
+      - name: Delete placeholder release
+        uses: actions/github-script@v6
+        continue-on-error: true # in case there's no existing release
+        with:
+          script: |
+            const { owner, repo } = context.repo
+            const { data: { id } } = await github.rest.repos.getLatestRelease({ owner, repo })
+            await github.rest.repos.deleteRelease({ owner, repo, release_id: id })
+      - name: Delete release tag
+        run: |
+          git tag -d release
+          git push origin :release
+        continue-on-error: true # in case there's no existing release
+      - name: Create new release
+        uses: softprops/action-gh-release@v1
+        with:
+          body: "Placeholder release for the latest build "
+          name: Latest
+          tag_name: release
+          files: |
+            cv.pdf
+            
