@@ -8,3 +8,5 @@ all:
 
 clean:
 	rm -f *.dvi *.log *.aux *.bbl *.blg *.toc *.lof *.lot *.cb *.~ *.out *.fdb_latexmk *.fls
+	rm -f sections/*.aux
+	rm -f *.pdf

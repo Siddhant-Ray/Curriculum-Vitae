@@ -21,7 +21,7 @@
  \usepackage[left=1.5cm, right=1.5cm, top=1.7cm]{geometry}
 %\setlength{\hintscolumnwidth}{3cm}                % if you want to change the width of the column with the dates
 %\setlength{\makecvheadnamewidth}{10cm}           % for the 'classic' style, if you want to force the width allocated to your name and avoid line breaks. be careful though, the length is normally calculated to avoid any overlap with your personal info; use this at your own typographical risks...
-
+\usepackage{anyfontsize}
 \usepackage{import}
 %\usepackage{hyperref}
 
@@ -69,156 +69,13 @@
 
 %\begin{multicols}{2}
 
-\section{Education}
-
-\vspace{2pt}
-
-\begin{itemize}
-
-\item{\cventry{2020 -- 2022}{Zürich}{MSc in Electrical Engineering and Information Technology}{ETH Zürich}{\textit{Switzerland}}{}}
-% - GPA -- 4.78/6
-\item{\cventry{2016 -- 2020}{ Vellore, Tamil Nadu}{B.Tech in Electronics and Communication Engineering}{VIT Vellore}{\textit{India}}{}}
-%- CGPA -- 9.51/10
-\item{\cventry{2014 -- 2016}{ Gurgaon, Haryana}{High School Certificate (CBSE)}{Delhi Public School Gurgaon}{\textit{India}}{}}
-%- Percentage -- 95.8\% 
-\end{itemize}
-
-
-\section{Research Experience}
-
-% \vspace{2pt}
-
-\begin{itemize}
-
-\item{\cventry{Feb 2022 -- }{\href{https://nsg.ee.ethz.ch/fileadmin/user_upload/thesis_proposal_packet_transformer.pdf}{Master Thesis at the Networked Systems Group }}{\href{https://github.com/Siddhant-Ray/Packet-Transformer}{Advancing Packet-Level Traffic Predictions with Transformers}}{ ETH Zurich}{}{\vspace{3pt} 
-\begin{itemize}
-\item Developed a Transformer based model for efficiently learning network dynamics and use this to make better packet forwarding decisions
-\item Our model uses features from both the packet and network state to capture the underlying patterns in the traffic in a pre-training phase in a task-agnostic manner
-\item We then have a fine-tuning on specific tasks phase to leverage this learnt behaviour, make quicker updates to the model and make better decisions.
-\end{itemize}
-}}
-
-\item{\cventry{Mar 2021 -- Jun 2021}{\href{https://nsg.ee.ethz.ch/home/}{Semester Thesis at the Networked Systems Group }}{\href{https://github.com/Siddhant-Ray/FRR-P4-Super-Node-Prototype}{Towards a New Framework for Integration of Network Planes }}{ ETH Zurich}{}{\vspace{3pt} 
-\begin{itemize}
-\item Created a prototype for a new forwarding node in programmable networks i.e. a Super-Node to make Layer-3(L3) routers more dynamic
-\item Our Super-Node consists of a traditional L3 router's control plane(CP) combined with a P4 programmable data plane(DP) for forwarding packets
-\item We attempt accelerated forwarding and network convergence by leveraging the compute power of the L3 CP combined with the programmability of the P4 DP
-\end{itemize}
-}}
-
-\item{\cventry{Feb 2021 -- May 2021}{\href{https://www.mins.ee.ethz.ch/index.html}{Semester Thesis at the Chair for Mathematical Information Science  }}{\href{https://github.com/Siddhant-Ray/Attentive-neural-networks-for-news-classification}{Attentive Neural Networks for News Classification}}{ ETH Zurich}{}{\vspace{3pt} 
-\begin{itemize}
-\item Developed a transformer based Neural Network model in order to classify a, multi-class hierarchical, context-overlapping news dataset
-\item Created a statistical algorithm to detect overlap in dataset classes, and used it to reduce label redundancy in the original dataset
-\item Demonstrated improvements using our same classification model on the improved dataset based on reduction using our algorithm
-\end{itemize}
-}}
-
-\item{\cventry{Dec 2019 -- May 2020}{\href{https://cutt.ly/1nJxoKS}{International Journal of Mobile Network Design and Innovation}}{\href{https://github.com/Siddhant-Ray/Machine-Learning-Based-Cell-Association}{Machine Learning based Cell Association for 5G Communication Networks}}{ VIT Vellore}{}{\vspace{3pt} 
-\begin{itemize}
-\item Proposed a new cell association scheme to meet the ultra low latency, load and traffic needs of the 5G networks
-\item Proposed a Hidden Markov Model based learning algorithm, on the network’s telemetry data, which is used to learn network parameters and select the best eNodeB for cell association 
-\item  The proposed model uses an HMM learning followed
-by Viterbi based decoding scheme for selecting the optimal cell for association
-\end{itemize}
-}}
-
-\vspace{4pt}
-
-
-% \item{\cventry{June 2018 -- Aug 2018}{\href{https://cutt.ly/MnJxdE3}{ResearchGate}}{A Comparative Analysis and Testing of Supervised ML Algorithms}{BlueStacks}{}{\vspace{3pt}
-% \begin{itemize}
-% \item  Studied and compared various supervised learning models and attempt to classify the best performing one based on varying comparison metrics
-% \item This project was carried out on data captured from front-end customer preference analytics from the BlueStacks engine and use to develop a model to provide personalised customer experience.
-% \end{itemize}
-% }}
-
-\end{itemize}
-
-\section{Professional Experience}
-
-% \vspace{2pt}
-
-\begin{itemize}
-
-\item{\cventry{Oct 2021 -- }{\href{https://cutt.ly/fRzr0iJ}{Graduate Research Assistant}}{{\href{https://cutt.ly/CRlCu8t}{Law, Economics, and Data Science Group, ETH Zurich}}}{Zürich, Switzerland}{}{\vspace{3pt} 
-\begin{itemize}
-\item Research Assistant to Professor Dr. Elliott Ash and currently working on improving semantic labelling for text corpora using newer NLP models
-\item Working on a paraphrase mining project which aims to determine clusters of similar narratives in Congressional records and legal corpora.
-\item Working on developing NLP models to capture underlying narratives in political policy documents, build dependency graphs and analyse impacts using social network graphs
-\end{itemize}
-}}
-
-\vspace{4pt}
-
-\item{\cventry{May 2019 -- July 2019}{Networking Intern}{Capgemini Engineering}{ Gurgaon, Haryana, India}{}{\vspace{3pt} 
-\begin{itemize}
-\item Developed a K-Shortest Path Searching algorithm for the ONOS platform in a Java environment, automated and deployed using Maven
-\item The algorithm was subject to dynamic constraints in terms of network resources such as required edges and vertices etc. and deployed in Layer 2 VPNs, for path calculation in Software Defined Networks
-\end{itemize}
-}}
-
-\vspace{4pt}
-
-\item{\cventry{May 2018 -- July 2018}{Summer Intern}{BlueStacks}{Gurgaon, Haryana, India}{}{\vspace{3pt}
-\begin{itemize}
-\item  Worked on a machine learning algorithm to predict the App Engine's appropriate display screen based on the customer's past experiences
-\item  Developed an automation script for generating SVG cards for the App Engine's game front end and also worked on an address verification tool using the EasyPost API
-\end{itemize}
-}}
-
-\end{itemize}
-
-\section{Skills}
-
-\vspace{1pt}
-
-\begin{itemize}
-
-\item \textbf{Programming:} Python, C++, Java, Bash, SQL C, Rust
-
-\vspace{1pt}
-
-\item \textbf{Tools:} Linux,  P4 switches, ONOS controller, AWS, Google Cloud, Maven, MATLAB, NetSim, Cadence, Docker
-
-\vspace{1pt}
-
-\item \textbf{Frameworks:} Mininet, FRR suite, PyTorch, TensorFlow, Sklearn, NLTK, Flask, SciPy, Scapy, BeautifulSoup, ns3
-
-\item \textbf{Natural Languages} -- English(C1) Hindi, Bengali, Deutsch(B1)
-
-\end{itemize}
-
-\section{Relevant Courses}
-\begin{itemize}
-\item \textbf{CS \& EE} - Advanced Computer Networks, System Security, Network Security, Distributed Computing, Discrete Event Systems , Computer Networks, Operating Systems, Wireless Communication, Networks Seminar
-\item \textbf{Math \& DS} - Introductory Machine Learning, Deep Learning, Learning Theory and Classification, Mathematics of Data Science, Neural Network Theory, Linear Algebra
-\end{itemize}
-
-\section{Honors and Awards}
-
-\vspace{1pt}
-
-\begin{itemize}
-\item \textbf{Winner at Datathon 2022, ETH Zurich (Microsoft Challenge)} -- (2022)
-\item \textbf{Best Outgoing Student (SENSE department, VIT Vellore)} -- (2020)
-\item \textbf{Merit Scholarship for Academic Excellence, VIT Vellore } -- (2016-17, 2017-18, 2018-19)
-
-\end{itemize}
-
-\section{Leadership and Volunteering}
-
-\vspace{1pt}
-
-\begin{itemize}
-
-\item \textbf{Technical Advisor at IETE VIT} -- (2019-20)
-\item \textbf{President at Anokha NGO} -- (2018-19)
-\item \textbf{Organizer at TEDx VIT Vellore} -- (2018-19)
-
-\end{itemize}
-
-
+\input{sections/education.tex}
+\input{sections/researchexp.tex}
+\input{sections/professionalexp.tex}
+\input{sections/skills.tex}
+\input{sections/courses.tex}
+\input{sections/awards.tex}
+\input{sections/leadership.tex}
 
 %\end{multicols}
 
