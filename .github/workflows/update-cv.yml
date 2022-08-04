@@ -20,6 +20,7 @@ jobs:
         uses: actions/github-script@v6
         continue-on-error: true # in case there's no existing release
         with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
             const { owner, repo } = context.repo
             const { data: { id } } = await github.rest.repos.getLatestRelease({ owner, repo })
@@ -29,6 +30,8 @@ jobs:
           git tag -d release
           git push origin :release
         continue-on-error: true # in case there's no existing release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Create new release
         uses: softprops/action-gh-release@v1
         with:
@@ -38,4 +41,6 @@ jobs:
           files: |
             cv.pdf
             resume.pdf
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             
