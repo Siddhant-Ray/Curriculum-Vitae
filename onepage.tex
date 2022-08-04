@@ -1,0 +1,249 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Deedy - One Page Two Column Resume
+% LaTeX Template
+% Version 1.2 (16/9/2014)
+%
+% Original author:
+% Debarghya Das (http://debarghyadas.com)
+%
+% Original repository:
+% https://github.com/deedydas/Deedy-Resume
+%
+% IMPORTANT: THIS TEMPLATE NEEDS TO BE COMPILED WITH XeLaTeX
+%
+% This template uses several fonts not included with Windows/Linux by
+% default. If you get compilation errors saying a font is missing, find the line
+% on which the font is used and either change it to a font included with your
+% operating system or comment the line out to use the default font.
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 
+% TODO:
+% 1. Integrate biber/bibtex for article citation under publications.
+% 2. Figure out a smoother way for the document to flow onto the next page.
+% 3. Add styling information for a "Projects/Hacks" section.
+% 4. Add location/address information
+% 5. Merge OpenFont and MacFonts as a single sty with options.
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% CHANGELOG:
+% v1.1:
+% 1. Fixed several compilation bugs with \renewcommand
+% 2. Got Open-source fonts (Windows/Linux support)
+% 3. Added Last Updated
+% 4. Move Title styling into .sty
+% 5. Commented .sty file.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Known Issues:
+% 1. Overflows onto second page if any column's contents are more than the
+% vertical limit
+% 2. Hacky space on the first bullet point on the second column.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%% Modified by 
+% Author: Siddhant Ray (https://github.com/Siddhant-Ray)
+
+\documentclass[]{onepage}
+\usepackage{fancyhdr}
+ 
+\pagestyle{fancy}
+\fancyhf{}
+ 
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%     LAST UPDATED DATE
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\lastupdated
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%     TITLE NAME
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\namesection{Siddhant}{Ray}{
+\href{mailto:siddhant.r98@gmail.com}{siddhant.r98@gmail.com} | +41779765006
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%     COLUMN ONE
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{minipage}[t]{0.33\textwidth} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     EDUCATION
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Education} 
+
+\subsection{ETH Zurich}
+\descript{MSc in Electrical Engineering and Information Technology}
+\location{Sep 2020 - | Zurich}
+\sectionsep
+
+\subsection{VIT Vellore}
+\descript{B.Tech in Electronics and Communication Engineering}
+\location{Jul 2016 - Jun 2020 | Vellore}
+\location{ Cum. GPA: 9.51 / 10}
+\sectionsep
+
+\subsection{DPS Gurgaon}
+\location{Grad. May 2016 | Gurgaon, India}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     LINKS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Links} 
+Github:// \href{https://github.com/Siddhant-Ray}{\bf Siddhant-Ray} \\
+LinkedIn://  \href{www.linkedin.com/in/siddhant-ray}{\bf siddhantray} \\
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     SKILLS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Skills}
+\subsection{Programming}
+\location{Proficient}
+Python \textbullet{} C++ \textbullet{} Java \textbullet{} Bash \textbullet{} \LaTeX\  \\ 
+\location{Intermediate}
+C \textbullet{} Matlab \textbullet{} SQL \textbullet{} P4 \textbullet{} Rust \\ 
+\vspace{0.1cm}
+\subsection{Frameworks}
+Mininet \textbullet{} FRR routing suite \textbullet{} PyTorch \\ \textbullet{} TensorFlow \textbullet{}Scikit-learn \textbullet{} NLTK \\ \textbullet{} Flask \textbullet{} SciPy \textbullet{} Scapy \textbullet{} Docker\\ \textbullet{} BeautifulSoup \textbullet{} NS3 \textbullet{} Git
+\vspace{0.1cm}
+\subsection{Areas}
+\textbullet{} Machine Learning/Deep Learning \\ \textbullet{} Computer Networks \textbullet{} Programmable Networks \textbullet{} Data Structures \textbullet{} Graph Algorithms \textbullet{} Distributed Computing \\ \textbullet{} Data Science
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     COURSEWORK
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Coursework}
+\subsection{Graduate}
+Advanced Topics in Computer Networks \\
+Deep Learning \\
+Discrete Event Systems \\
+Distributed Computing \\
+Introduction to Machine Learning \\
+Learning Theory \& Classification \\
+Mathematics of Data Science \\
+Network Security \\
+Neural Network Theory \\
+System Security \\
+\vspace{0.1cm}
+%\sectionsep
+\subsection{Under Graduate}
+Computer Networks \\
+Operating Systems \\
+Wireless Communication \\
+Applied Linear Algebra \\
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%     COLUMN TWO
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{minipage} 
+\hfill
+\begin{minipage}[t]{0.66\textwidth} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     RESEARCH
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Research}
+
+\runsubsection{ \href{https://nsg.ee.ethz.ch/home/}{Networked Systems Group}}
+\descript{| Master Thesis}
+\location{Feb 2022 – Aug 2022 | Zurich}
+Developed a Transformer based model for efficiently learning network dynamics and make better packet level decisions using a task-agnostic pre-training phase and leveraging on specific tasks in the fine-tuning phase. Available at: {\href{https://github.com/Siddhant-Ray/Packet-Transformer}{[CODE]}}
+\smallsectionsep
+
+\runsubsection{ \href{https://nsg.ee.ethz.ch/home/}{Networked Systems Group}}
+\descript{| Semester Thesis}
+\location{Mar 2021 – Jun 2021 | Zurich}
+Created a prototype for a new forwarding node in programmable networks i.e. a Super-Node with a traditional L3 router's control plane combined with a P4 programmable data plane for accelerated packet forwarding and network convergence. Available at: {\href{https://github.com/Siddhant-Ray/FRR-P4-Super-Node-Prototype}{[CODE]}}
+\smallsectionsep
+
+\runsubsection{\href{https://www.mins.ee.ethz.ch/index.html}{Chair for Mathematical Info. Science}}
+\descript{| Semester Thesis}
+\location{Feb 2021 – May 2021 | Zurich}
+Developed a transformer based model in order to classify a, multi class hierarchical, context-overlapping news dataset along with a new a statistical algorithm to detect dataset class overlap and reduce label redundancy. Available at: {\href{https://github.com/Siddhant-Ray/Attentive-neural-networks-for-news-classification}{[CODE]}}
+\smallsectionsep
+
+%\runsubsection{\href{https://research.vit.ac.in/unit/department/department-of-communication-engineering}{Wireless Communication Lab}}
+%\descript{| Bachelor Thesis}
+%\location{Dec 2019 – May 2020 | Vellore}
+%Proposed a new cell association scheme to meet the ultra low latency, load and traffic needs of the 5G networks using a Hidden Markov Model based learning algorithm and Viterbi based decoding scheme. Available at : {\href{https://github.com/Siddhant-Ray/Machine-Learning-Based-Cell-Association}{[CODE]}} {\href{https://cutt.ly/1nJxoKS}{[PAPER]}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     EXPERIENCE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Experience}
+\runsubsection{\href{https://cutt.ly/CRlCu8t}{Law, Econ \& Data Science Group}}
+\descript{| Research Assistant }
+\location{Oct 2021 - Present | Zurich}
+\vspace{0.4cm}
+\begin{tightemize}
+\item Working on improving semantic labelling for text corpora using newer NLP models
+\item Working on a paraphrase mining project which aims to determine clusters of similar narratives in Congressional records and legal corpora
+\end{tightemize}
+\vspace{0.1cm}
+
+\runsubsection{Capgemini Engineering}
+\descript{| Networking Intern }
+\location{May 2019 – Jul 2019 | Gurgaon}
+\vspace{0.07cm} % Hacky fix for awkward extra vertical space
+\begin{tightemize}
+\item Developed a K-Shortest Path Searching algorithm for the ONOS SDN platform in a Java environment
+\item Algorithm had dynamic constraints in terms of network resources  and deployed in Layer 2 VPNs, for path calculation in Software Defined Networks
+\end{tightemize}
+\vspace{0.1cm}
+
+\runsubsection{BlueStacks}
+\descript{| Summer Intern }
+\location{May 2018 – Jul 2018 | Gurgaon}
+\vspace{0.03cm}
+\begin{tightemize}
+\item Worked on a machine learning algorithm to predict the App Engine's appropriate display screen based on the customer's past experiences
+\item Developed an automation script for generating SVG cards for the App Engine's game front end and also worked on an address verification tool using the EasyPost API
+\end{tightemize}
+\vspace{0.01cm}
+
+\section{Course Projects}
+\vspace{0.2cm}
+\begin{tightemize}
+\item Investigating Possible Inductive Biases in Local Sparse Attention ViT Architectures Against Traditional CNNs :  {\href{https://github.com/Siddhant-Ray/Deep-Learning-Project-2021}{[CODE]}}
+\item Maximizing Cross Traffic Flows in a L2/L3 Network with Programmable Switches : {\href{https://github.com/Siddhant-Ray/Advnet-Project-ETH}{[CODE]}}
+\item Automatic Certificate Management Environment framework : {\href{https://github.com/Siddhant-Ray/NetworkSecurity-ACME-Project}{[CODE]}}
+\end{tightemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     AWARDS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\vspace{-0.1cm}
+\section{Awards} 
+\begin{tabular}{ll}
+2022         & Winner, Datathon 2022 at ETH Zurich, Microsoft Challenge \\
+2020	     &  Best Outgoing Student (SENSE department, VIT Vellore)\\
+2016-19      & Merit Scholarship for Academic Excellence, VIT Vellore
+\end{tabular}
+\sectionsep
+
+\end{minipage} 
+\end{document}  \documentclass[]{article}
