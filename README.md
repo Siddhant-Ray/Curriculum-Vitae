@@ -14,7 +14,7 @@ For the single page version, I use a different template, well because it just lo
 ```\fontspec``` command, it can only be compiled with ```XeLaTex```.
 
 ## Compilation 
-Compile both versions with with:
+Compile both versions with:
 ```sh
 make
 ```
@@ -33,5 +33,5 @@ make clean
 ```
 
 ## Generated PDFs
-GitHub Actions is used to automatically generate the PDF for both versions. This is packaged a single release, pointing to the latest commit on the `master` branch. This release creation is necessary as GitHub doesn't allow us to store binaries (unlike GitLab which is just much nicer for this). The compiled PDFs are thus available as release assests always.
+GitHub Actions is used to automatically generate the PDF for both versions, using CI on every push. This is packaged a single release, pointing to the latest commit on the `master` branch,. This release creation is necessary as GitHub doesn't allow us to store binaries (unlike GitLab which is just much nicer for this). The compiled PDFs are thus available as release assests always.
 
