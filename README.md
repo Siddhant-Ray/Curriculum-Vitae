@@ -6,11 +6,12 @@ My full CV and also a single page resume can be downloaded here:
 - [CV](https://github.com/Siddhant-Ray/Curriculum-Vitae/releases/latest/download/cv.pdf) 
 - [Resume](https://github.com/Siddhant-Ray/Curriculum-Vitae/releases/latest/download/resume.pdf) 
 
-## Reusing the latex templates:
+## Reusing the LaTex templates:
 
 For reproducing, clone this repository. The file [`main.tex`](main.tex) defines the template for the full version, along with the commands and environments used. The actual content present is stored in TeX files located in the [sections](sections/) directory.
 
-For the single page version, I use a different template, well because it just looks nicer. All the content for this is in the TeX file [`onepage.tex`](onepage.tex) and the support macros are in [`onepage.cls`](onepage.cls), along with supporting fonts in [fonts](fonts/). 
+For the single page version, I use a different template, well because it just looks nicer. All the content for this is in the TeX file [`onepage.tex`](onepage.tex) and the support macros are in [`onepage.cls`](onepage.cls), along with supporting fonts in [fonts](fonts/). As the one page template uses the 
+```\fontspec``` command, it can only be compiled with ```XeLaTex```.
 
 ## Compilation 
 Compile both versions with with:
