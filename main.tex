@@ -25,6 +25,10 @@
 \usepackage{import}
 %\usepackage{hyperref}
 
+\newenvironment{tightemize}{
+\vspace{-\topsep}\begin{itemize}\itemsep1pt \parskip0pt \parsep0pt}
+{\end{itemize}\vspace{-\topsep}}
+
 % personal data
 \name{Siddhant}{Ray} 
 
@@ -71,6 +75,7 @@
 
 \input{sections/education.tex}
 \input{sections/researchexp.tex}
+\input{sections/courseprojects.tex}
 \input{sections/professionalexp.tex}
 \input{sections/skills.tex}
 \input{sections/courses.tex}
