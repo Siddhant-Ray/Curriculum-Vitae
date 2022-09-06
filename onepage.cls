@@ -85,3 +85,9 @@ Last Updated on \today
 \vspace{-\topsep}\begin{itemize}\itemsep1pt \parskip0pt \parsep0pt}
 {\end{itemize}\vspace{-\topsep}}
 
+% Tab command
+\newcommand{\smallindent}{\hphantom{N}}
+
+% Justify text
+\usepackage{ragged2e}
+
