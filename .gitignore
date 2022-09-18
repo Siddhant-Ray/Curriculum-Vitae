@@ -279,7 +279,7 @@ TSWLatexianTemp*
 *.pdf
 
 # Don't track .bib for now
-*.bib
+#*.bib
 
 # Bad OSX files
 .DS_Store
