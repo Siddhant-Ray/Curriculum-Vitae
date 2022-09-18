@@ -10,7 +10,7 @@
 \moderncvstyle{banking}                            % style options are 'casual' (default), 'classic', 'oldstyle' and 'banking'
 \moderncvcolor{black}                                % color options 'blue' (default), 'orange', 'green', 'red', 'purple', 'grey' and 'black'
 %\renewcommand{\familydefault}{\sfdefault}         % to set the default font; use '\sfdefault' for the default sans serif font, '\rmdefault' for the default roman one, or any tex font name
-%\nopagenumbers{}                                  % uncomment to suppress automatic page numbering for CVs longer than one page
+\nopagenumbers{}                                  % uncomment to suppress automatic page numbering for CVs longer than one page
 
 % character encoding
 \usepackage[utf8]{inputenc}                       % if you are not using xelatex ou lualatex, replace by the encoding you are using
@@ -24,6 +24,8 @@
 \usepackage{anyfontsize}
 \usepackage{import}
 %\usepackage{hyperref}
+\usepackage{bibentry}
+\usepackage{natbib}
 
 \newenvironment{tightemize}{
 \vspace{-\topsep}\begin{itemize}\itemsep1pt \parskip0pt \parsep0pt}
@@ -42,7 +44,7 @@
 %\phone[fax]{+3~(456)~789~012}                      % optional, remove / comment the line if not wanted
 \email{siddhant.r98@gmail.com}                               % optional, remove / comment the line if not wanted
 \homepage{www.linkedin.com/in/siddhant-ray (LinkedIn)}   
-\extrainfo{\href{https://github.com/Siddhant-Ray}{https://github.com/Siddhant-Ray (GitHub)}}                   
+%\extrainfo{\href{https://github.com/Siddhant-Ray}{https://github.com/Siddhant-Ray (GitHub)}}                   
  % optional, remove / comment the line if not wanted
                 % optional, remove / comment the line if not wanted
 %\photo[64pt][0.4pt]{picture}                       % optional, remove / comment the line if not wanted; '64pt' is the height the picture must be resized to, 0.4pt is the thickness of the frame around it (put it to 0pt for no frame) and 'picture' is the name of the picture file
@@ -69,7 +71,7 @@
     %I focus on learning, understanding and analyzing advanced engineering concepts in depth. My main areas of interest are machine learning, computer networks and distributed computing algorithms.  I am also enthusiastic about cloud computing and blockchain. I have a strong mathematical and programming background, with a keen interest to apply theoretical concepts learnt for solving practical problems.
 %\end{center}
 
-\vspace{-5pt}
+\vspace{-20pt}
 % { \textbf{Expertise}: Marketing online et offline, Coordination des projets, Branding, Merchandising.\\
 % \textbf{Projets réalisés}:http://gnt.globo.com/especiais/projetos-multitelas}
 
@@ -77,8 +79,8 @@
 
 \input{sections/education.tex}
 \input{sections/researchexp.tex}
-\input{sections/publications.tex}
 \input{sections/professionalexp.tex}
+\input{sections/publications.tex}
 \input{sections/skills.tex}
 \input{sections/courseprojects.tex}
 \input{sections/courses.tex}

@@ -1,9 +1,20 @@
 % Publications from a BibTeX file without multibib
 %  for numerical labels: \renewcommand{\bibliographyitemlabel}{\@biblabel{\arabic{enumiv}}}% CONSIDER MERGING WITH PREAMBLE PART
 %  to redefine the heading string ("Publications"): \renewcommand{\refname}{Articles}
-\nocite{*}
+
+%\nocite{*} 
+%\bibliographystyle{plain}
+%\bibliography{cv}                        % 'cv' is the name of a BibTeX file
+
+\section{Publications}
+
 \bibliographystyle{plain}
-\bibliography{cv}                        % 'publications' is the name of a BibTeX file
+\nobibliography{cv}
+\renewcommand*\labelenumi{[\theenumi]}
+\begin{enumerate}
+    \item \bibentry{dietmuller2022new} [\href{https://arxiv.org/abs/2207.05843}{link}, \href{www.google.com}{code}]
+    \item \bibentry{ray2020machine} [\href{https://www.inderscienceonline.com/doi/abs/10.1504/IJMNDI.2020.112622}{link}, \href{https://github.com/Siddhant-Ray/Machine-Learning-Based-Cell-Association}{code}]
+\end{enumerate}
 
 % Publications from a BibTeX file using the multibib package
 %\section{Publications}
