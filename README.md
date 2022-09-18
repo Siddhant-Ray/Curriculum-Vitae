@@ -1,6 +1,6 @@
 # Curriculum-Vitae
 
-This repository contains most recently updated versions of my CV.
+This repository contains the most recently updated versions of my CV.
 
 My full CV and also a single page resume can be downloaded here:
 - [CV](https://github.com/Siddhant-Ray/Curriculum-Vitae/releases/latest/download/cv.pdf) 
@@ -18,13 +18,13 @@ Compile both versions with:
 ```sh
 make
 ```
-only the one page version with 
-```sh
-make one
-```
-or only the full verision with 
+only the full version with 
 ```sh
 make full
+```
+or only the one page verision with 
+```sh
+make one
 ```
 
 Finally all auxiliary files can be cleaned using 
