@@ -25,6 +25,12 @@ one:
 	xelatex -jobname=$(SNAME) $(SINGLE)
 	xelatex -jobname=$(SNAME) $(SINGLE)
 
+one-pub:
+	xelatex -jobname=$(SNAME)_pub $(SINGLE)
+	bibtex $(SNAME)_pub
+	xelatex -jobname=$(SNAME)_pub $(SINGLE)
+	xelatex -jobname=$(SNAME)_pub $(SINGLE)
+
 .PHONY: clean	
 clean:
 	rm -f *.dvi *.log *.aux *.bbl *.blg *.toc *.lof *.lot *.cb *.~ *.out *.fdb_latexmk *.fls

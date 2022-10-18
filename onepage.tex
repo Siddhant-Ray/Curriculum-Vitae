@@ -49,9 +49,14 @@
 
 \documentclass[]{onepage}
 \usepackage{fancyhdr}
- 
+
+\usepackage{bibentry}
+\usepackage{natbib}
+
 \pagestyle{fancy}
 \fancyhf{}
+
+%\renewcommand*{\bibliographyitemlabel}{[\arabic{enumiv}]}% CONSIDER REPLACING THE ABOVE BY THIS
  
 \begin{document}
 
@@ -200,19 +205,28 @@ Developed a transformer based model in order to classify a, multi class hierarch
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Experience}
-\runsubsection{\href{https://cutt.ly/CRlCu8t}{Law, Econ \& Data Science Group}}
-\descript{| Graduate Research Assistant }
-\location{Oct 2021 - Sep 2022 | Zurich}
+
+\runsubsection{Researcher}
+\descript{| Advanced Network Architectures Lab,  UPC Barcelona}
+\location{Sep 2022 – Present}
 \vspace{0.4cm}
 \begin{tightemize}
-\item Working on improving semantic labelling for text corpora using newer NLP models
-\item Working on a paraphrase mining project which aims to determine clusters of similar narratives in Congressional records and legal corpora
+\item Developing machine learning enhanced resource management in cloud-edge networks.
+\end{tightemize}
+
+\runsubsection{Graduate Research Assistant}
+\descript{| Law, Econ \& Data Science Group, ETH Zurich}
+\location{Oct 2021 - Sep 2022}
+\vspace{0.1cm}
+\begin{tightemize}
+\item Improved semantic labelling for text corpora using newer NLP models
+\item Paraphrase mining project which aimed to determine clusters of similar narratives in Congressional records and legal corpora
 \end{tightemize}
 \vspace{0.1cm}
 
-\runsubsection{Capgemini Engineering}
-\descript{| Software Development Intern }
-\location{May 2019 – Jul 2019 | Gurgaon}
+\runsubsection{Software Development Intern}
+\descript{| Capgemini Engineering }
+\location{May 2019 – Jul 2019}
 \vspace{0.07cm} % Hacky fix for awkward extra vertical space
 \begin{tightemize}
 \item Developed a K-Shortest Path Searching algorithm for the ONOS SDN platform in a Java environment
@@ -220,23 +234,36 @@ Developed a transformer based model in order to classify a, multi class hierarch
 \end{tightemize}
 \vspace{0.1cm}
 
-\runsubsection{BlueStacks}
-\descript{| Software Development Intern }
-\location{May 2018 – Jul 2018 | Gurgaon}
-\vspace{0.03cm}
-\begin{tightemize}
-\item Worked on a machine learning algorithm to predict the App Engine's appropriate display screen based on the customer's past experiences
-\item Developed an automation script for generating SVG cards for the App Engine's game front end and also worked on an address verification tool using the EasyPost API
-\end{tightemize}
-\vspace{0.01cm}
+% \runsubsection{BlueStacks}
+% \descript{| Software Development Intern }
+% \location{May 2018 – Jul 2018 | Gurgaon}
+% \vspace{0.03cm}
+% \begin{tightemize}
+% \item Worked on a machine learning algorithm to predict the App Engine's appropriate display screen based on the customer's past experiences
+% \item Developed an automation script for generating SVG cards for the App Engine's game front end and also worked on an address verification tool using the EasyPost API
+% \end{tightemize}
+% \vspace{0.01cm}
 
-\section{Course Projects}
-\vspace{0.2cm}
-\begin{tightemize}
-\item Investigating Possible Inductive Biases in Local Sparse Attention ViT Architectures Against Traditional CNNs :  {\href{https://github.com/Siddhant-Ray/Deep-Learning-Project-2021}{[CODE]}}
-\item Maximizing Cross Traffic Flows in a L2/L3 Network with Programmable Switches : {\href{https://github.com/Siddhant-Ray/Advnet-Project-ETH}{[CODE]}}
-\item Automatic Certificate Management Environment framework : {\href{https://github.com/Siddhant-Ray/NetworkSecurity-ACME-Project}{[CODE]}}
-\end{tightemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Replace with publications for Amherst
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \section{Course Projects}
+% \vspace{0.2cm}
+% \begin{tightemize}
+% \item Investigating Possible Inductive Biases in Local Sparse Attention ViT Architectures Against Traditional CNNs :  {\href{https://github.com/Siddhant-Ray/Deep-Learning-Project-2021}{[CODE]}}
+% \item Maximizing Cross Traffic Flows in a L2/L3 Network with Programmable Switches : {\href{https://github.com/Siddhant-Ray/Advnet-Project-ETH}{[CODE]}}
+% \item Automatic Certificate Management Environment framework : {\href{https://github.com/Siddhant-Ray/NetworkSecurity-ACME-Project}{[CODE]}}
+% \end{tightemize}
+
+\section{Publications}
+\bibliographystyle{plain}
+\nobibliography{cv}
+\renewcommand*\labelenumi{[\theenumi]}
+\begin{enumerate}
+    \item \bibentry{dietmuller2022new} [\href{https://arxiv.org/abs/2207.05843}{link}, \href{https://github.com/Siddhant-Ray/Network-Traffic-Transformer}{code}]
+    \item \bibentry{ray2020machine} [\href{https://www.inderscienceonline.com/doi/abs/10.1504/IJMNDI.2020.112622}{link}, \href{https://github.com/Siddhant-Ray/Machine-Learning-Based-Cell-Association}{code}]
+\end{enumerate}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %     AWARDS
@@ -244,7 +271,7 @@ Developed a transformer based model in order to classify a, multi class hierarch
 \vspace{-0.1cm}
 \section{Awards} 
 \begin{tabular}{ll}
-2022         & Winner, Datathon 2022 at ETH Zurich, Microsoft Challenge:  {\href{https://github.com/FatjonZOGAJ/multilingual-text-analytics}{[CODE]}} \\
+2022         & \href{https://github.com/FatjonZOGAJ/multilingual-text-analytics}{Winner, Datathon 2022 at ETH Zurich, Microsoft Challenge}\\
 2020	     &  Best Outgoing Student (SENSE department, VIT Vellore)\\
 2016-19      & Merit Scholarship for Academic Excellence, VIT Vellore
 \end{tabular}
