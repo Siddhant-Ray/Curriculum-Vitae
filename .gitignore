@@ -283,6 +283,3 @@ TSWLatexianTemp*
 
 # Bad OSX files
 .DS_Store
-
-# .config
-fonts/config/*.config
