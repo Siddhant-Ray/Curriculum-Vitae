@@ -49,9 +49,28 @@
 
 \documentclass[]{onepage}
 \usepackage{fancyhdr}
+\usepackage{psfrag}
+\usepackage{etoolbox}
 
 \usepackage{bibentry}
 \usepackage{natbib}
+
+% Bool condition to include publications or course projects
+% If you want to include publications, set this to true
+\newbool{includepubs}
+\setbool{includepubs}{false}
+\IfFileExists{fonts/config/pubs.config}{
+  \setbool{includepubs}{true}
+}
+
+% Bool condition to include course projects
+% If you want to include course projects, set this to true
+% Default is CPs, non default is pubs
+\newbool{includecourseprojects}
+\setbool{includecourseprojects}{true}
+\IfFileExists{fonts/config/pubs.config}{
+  \setbool{includecourseprojects}{false}
+}
 
 \pagestyle{fancy}
 \fancyhf{}
@@ -245,16 +264,13 @@ Developed a transformer based model in order to classify a, multi class hierarch
 % \vspace{0.01cm}
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Replace with publications for Amherst
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \section{Course Projects}
-% \vspace{0.2cm}
-% \begin{tightemize}
-% \item Investigating Possible Inductive Biases in Local Sparse Attention ViT Architectures Against Traditional CNNs :  {\href{https://github.com/Siddhant-Ray/Deep-Learning-Project-2021}{[CODE]}}
-% \item Maximizing Cross Traffic Flows in a L2/L3 Network with Programmable Switches : {\href{https://github.com/Siddhant-Ray/Advnet-Project-ETH}{[CODE]}}
-% \item Automatic Certificate Management Environment framework : {\href{https://github.com/Siddhant-Ray/NetworkSecurity-ACME-Project}{[CODE]}}
-% \end{tightemize}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Replace publications with course projects if needed
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Set on condition
+
+\ifbool{includepubs}{
 
 \section{Publications}
 \bibliographystyle{plain}
@@ -264,6 +280,18 @@ Developed a transformer based model in order to classify a, multi class hierarch
     \item \bibentry{dietmuller2022new} [\href{https://arxiv.org/abs/2207.05843}{link}, \href{https://github.com/Siddhant-Ray/Network-Traffic-Transformer}{code}]
     \item \bibentry{ray2020machine} [\href{https://www.inderscienceonline.com/doi/abs/10.1504/IJMNDI.2020.112622}{link}, \href{https://github.com/Siddhant-Ray/Machine-Learning-Based-Cell-Association}{code}]
 \end{enumerate}
+
+}
+
+\ifbool{includecourseprojects}{
+    \section{Course Projects}
+    \vspace{0.2cm}
+    \begin{tightemize}
+    \item Investigating Possible Inductive Biases in Local Sparse Attention ViT Architectures Against Traditional CNNs :  {\href{https://github.com/Siddhant-Ray/Deep-Learning-Project-2021}{[CODE]}}
+    \item Maximizing Cross Traffic Flows in a L2/L3 Network with Programmable Switches : {\href{https://github.com/Siddhant-Ray/Advnet-Project-ETH}{[CODE]}}
+    \item Automatic Certificate Management Environment framework : {\href{https://github.com/Siddhant-Ray/NetworkSecurity-ACME-Project}{[CODE]}}
+    \end{tightemize}
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %     AWARDS
