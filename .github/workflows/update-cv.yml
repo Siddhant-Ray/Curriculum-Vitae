@@ -58,6 +58,7 @@ jobs:
           files: |
             cv.pdf
             resume.pdf
+            resume_pub.pdf
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             
