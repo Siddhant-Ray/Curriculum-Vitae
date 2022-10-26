@@ -22,10 +22,17 @@ only the full version with
 ```sh
 make full
 ```
-or only the one page verision with 
+only the one page verision
+with course projects (default)
 ```sh
 make one
 ```
+only the one page verision
+with publications
+```sh
+make one-pub
+```
+
 
 Finally all auxiliary files can be cleaned using 
 ```sh
