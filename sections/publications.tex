@@ -2,19 +2,39 @@
 %  for numerical labels: \renewcommand{\bibliographyitemlabel}{\@biblabel{\arabic{enumiv}}}% CONSIDER MERGING WITH PREAMBLE PART
 %  to redefine the heading string ("Publications"): \renewcommand{\refname}{Articles}
 
-%\nocite{*} 
-%\bibliographystyle{plain}
-%\bibliography{cv}                        % 'cv' is the name of a BibTeX file
+%% HACK: ModernCV and bibliography styles don't play well together, and we want to have the year of the publication
+%% in the left column, similar to the other headings. For this, we modify the plainy.bst file to have the year and the
+%% reversed chronological order of the publications. New file is plainyrrev.bst, included in the folder.
+
+%% Source: https://tex.stackexchange.com/questions/85965/sorted-list-of-publications-in-moderncv-from-bibtex
 
 \section{Publications}
+\nocite{*} 
+\bibliographystyle{styles/plainyrrev}
+\bibliography{cv}                   % 'publications' is the name of a BibTeX file
 
-\bibliographystyle{plain}
-\nobibliography{cv}
-\renewcommand*\labelenumi{[\theenumi]}
-\begin{enumerate}
-    \item \bibentry{dietmuller2022new} [\href{https://doi.org/10.1145/3563766.3564104}{link}, \href{https://github.com/Siddhant-Ray/Network-Traffic-Transformer}{code}]
-    \item \bibentry{ray2020machine} [\href{https://www.inderscienceonline.com/doi/abs/10.1504/IJMNDI.2020.112622}{link}, \href{https://github.com/Siddhant-Ray/Machine-Learning-Based-Cell-Association}{code}]
-\end{enumerate}
+
+% %% Manual bibtex enries with arbic numbers
+% \section{Publications}
+
+% \bibliographystyle{plain}
+% \nobibliography{cv}
+% \renewcommand*\labelenumi{[\theenumi]}
+% % \begin{enumerate}
+% %     \item \bibentry{dietmuller2022new} [\href{https://doi.org/10.1145/3563766.3564104}{link}, \href{https://github.com/Siddhant-Ray/Network-Traffic-Transformer}{code}]
+% %     \item \bibentry{ray2020machine} [\href{https://www.inderscienceonline.com/doi/abs/10.1504/IJMNDI.2020.112622}{link}, \href{https://github.com/Siddhant-Ray/Machine-Learning-Based-Cell-Association}{code}]
+% % \end{enumerate}
+
+
+% % \renewcommand*{\cvitem}[3][.25em]{%
+% %   \begin{tabular}{@{}b{\hintscolumnwidth}@{\hspace{\separatorcolumnwidth}}b{\maincolumnwidth}@{}}%
+% %       \raggedleft\hintstyle{#2} &{#3}%
+% %   \end{tabular}%
+% %   \par\addvspace{#1}}
+
+% \cventry{2022}{\mdseries \bibentry{dietmuller2022new}}{}{}{}{}
+% \cventry{2020}{\mdseries \bibentry{ray2020machine}}{}{}{}{}
+
 
 % Publications from a BibTeX file using the multibib package
 %\section{Publications}

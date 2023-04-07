@@ -7,7 +7,7 @@
 \documentclass[11pt,a4paper,sans]{moderncv}        % possible options include font size ('10pt', '11pt' and '12pt'), paper size ('a4paper', 'letterpaper', 'a5paper', 'legalpaper', 'executivepaper' and 'landscape') and font family ('sans' and 'roman')
 
 % modern themes
-\moderncvstyle{banking}                            % style options are 'casual' (default), 'classic', 'oldstyle' and 'banking'
+\moderncvstyle{classic}                            % style options are 'casual' (default), 'classic', 'oldstyle' and 'banking'
 \moderncvcolor{black}                                % color options 'blue' (default), 'orange', 'green', 'red', 'purple', 'grey' and 'black'
 %\renewcommand{\familydefault}{\sfdefault}         % to set the default font; use '\sfdefault' for the default sans serif font, '\rmdefault' for the default roman one, or any tex font name
 \nopagenumbers{}                                  % uncomment to suppress automatic page numbering for CVs longer than one page
@@ -24,41 +24,28 @@
 \usepackage{anyfontsize}
 \usepackage{import}
 %\usepackage{hyperref}
-\usepackage{bibentry}
-\usepackage{natbib}
 
-\newenvironment{tightemize}{
-\vspace{-\topsep}\begin{itemize}\itemsep1pt \parskip0pt \parsep0pt}
-{\end{itemize}\vspace{-\topsep}}
+%% Different bibliography styles
+% \usepackage{bibentry}
+% \usepackage{natbib}
 
 % personal data
 \name{Siddhant}{Ray} 
-\vspace{-5cm}
-%\address{W2B-096 Wellington Estate, DLF Phase 5, 122009 - Gurgaon - India}
-\address{4/2 Carrer del Dr Fleming 4, Vilanova i la Geltrú 08800, Barcelona, Spain}
+%\vspace{-5cm}
+\address{Gurugram, Harayana, India}
 % optional, remove / comment the line if not wanted; the "postcode city" and and "country" arguments can be omitted or provided empty
-%\phone[mobile]{+91-9971865758} 
-\phone[mobile]{+34-696087836} 
+\phone[mobile]{+91-9971865758}  
 % optional, remove / comment the line if not wanted
 %\phone[fixed]{01234 123456}                    % optional, remove / comment the line if not wanted
 %\phone[fax]{+3~(456)~789~012}                      % optional, remove / comment the line if not wanted
 \email{siddhant.r98@gmail.com}                               % optional, remove / comment the line if not wanted
 \homepage{www.linkedin.com/in/siddhant-ray (LinkedIn)}   
-%\extrainfo{\href{https://github.com/Siddhant-Ray}{https://github.com/Siddhant-Ray (GitHub)}}                   
+\extrainfo{\href{https://github.com/Siddhant-Ray}{https://github.com/Siddhant-Ray (GitHub)}}                   
  % optional, remove / comment the line if not wanted
                 % optional, remove / comment the line if not wanted
 %\photo[64pt][0.4pt]{picture}                       % optional, remove / comment the line if not wanted; '64pt' is the height the picture must be resized to, 0.4pt is the thickness of the frame around it (put it to 0pt for no frame) and 'picture' is the name of the picture file
 %\quote{Some quote}                                 % optional, remove / comment the line if not wanted
 
-% to show numerical labels in the bibliography (default is to show no labels); only useful if you make citations in your resume
-%\makeatletter
-%\renewcommand*{\bibliographyitemlabel}{\@biblabel{\arabic{enumiv}}}
-%\makeatother
-\renewcommand*{\bibliographyitemlabel}{[\arabic{enumiv}]}% CONSIDER REPLACING THE ABOVE BY THIS
-
-% bibliography with mutiple entries
-%\usepackage{multibib}
-%\newcites{book,misc}{{Books},{Others}}
 %----------------------------------------------------------------------------------
 %            content
 %----------------------------------------------------------------------------------
@@ -66,12 +53,12 @@
 %\begin{CJK*}{UTF8}{gbsn}                          % to typeset your resume in Chinese using CJK
 %-----       resume       ---------------------------------------------------------
 \makecvtitle 
-\vspace{-27pt}
+%\vspace{-27pt}
 %\begin{center}
     %I focus on learning, understanding and analyzing advanced engineering concepts in depth. My main areas of interest are machine learning, computer networks and distributed computing algorithms.  I am also enthusiastic about cloud computing and blockchain. I have a strong mathematical and programming background, with a keen interest to apply theoretical concepts learnt for solving practical problems.
 %\end{center}
 
-\vspace{-20pt}
+%\vspace{-20pt}
 % { \textbf{Expertise}: Marketing online et offline, Coordination des projets, Branding, Merchandising.\\
 % \textbf{Projets réalisés}:http://gnt.globo.com/especiais/projetos-multitelas}
 
@@ -87,25 +74,6 @@
 \input{sections/awards.tex}
 \input{sections/leadership.tex}
 
-%\end{multicols}
-
-% Publications from a BibTeX file without multibib
-%  for numerical labels: \renewcommand{\bibliographyitemlabel}{\@biblabel{\arabic{enumiv}}}% CONSIDER MERGING WITH PREAMBLE PART
-%  to redefine the heading string ("Publications"): \renewcommand{\refname}{Articles}
-%%\nocite{*}
-%bibliographystyle{plain}
-%\bibliography{cv}                        % 'publications' is the name of a BibTeX file
-
-% Publications from a BibTeX file using the multibib package
-%\section{Publications}
-%\nocitebook{book1,book2}
-%\bibliographystylebook{plain}
-%\bibliographybook{publications}                   % 'publications' is the name of a BibTeX file
-%\nocitemisc{misc1,misc2,misc3}
-%\bibliographystylemisc{plain}
-%\bibliographymisc{publications}                   % 'publications' is the name of a BibTeX file
-
-%-----       letter       ---------------------------------------------------------
 
 \end{document}
 
