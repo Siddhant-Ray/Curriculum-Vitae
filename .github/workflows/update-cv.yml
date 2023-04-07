@@ -30,7 +30,7 @@ jobs:
             cp cv.pdf ./temp/assets/pdf
             cd ./temp
             git add .
-            git diff-index --quiet HEAD || git commit -m "Automatic updation of cv from https://github.com/Siddhant-Ray/Curriculum-Vitae"
+            git diff-index --quiet HEAD || git commit -m "Automatically updating cv from https://github.com/Siddhant-Ray/Curriculum-Vitae"
             git push origin master
         continue-on-error: true # In case push fails
       - name: Delete placeholder release
