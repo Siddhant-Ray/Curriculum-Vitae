@@ -283,3 +283,8 @@ TSWLatexianTemp*
 
 # Bad OSX files
 .DS_Store
+
+# Photos
+*.jpg
+*.jpeg
+*.png
