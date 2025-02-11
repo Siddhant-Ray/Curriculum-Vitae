@@ -46,9 +46,25 @@ jobs:
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
-            const { owner, repo } = context.repo
-            const { data: { id } } = await github.rest.repos.getLatestRelease({ owner, repo })
-            await github.rest.repos.deleteRelease({ owner, repo, release_id: id })
+            const { owner, repo } = context.repo;
+            let latestRelease;
+            try {
+              latestRelease = await github.rest.repos.getLatestRelease({ owner, repo });
+              if (!latestRelease.data.id) {
+                console.log("No release found.");
+                return;
+              }
+              const { id } = latestRelease.data;
+              await github.rest.repos.deleteRelease({ owner, repo, release_id: id });
+              console.log(`Deleted release with ID: ${id}`);
+            } catch (error) {
+              if (error.status === 404) {
+                console.log("Release not found, skipping delete.");
+              } else {
+                console.log("Error deleting release:", error);
+                throw error;  // rethrow other errors
+              }
+            }
       - name: Delete release tag
         run: |
           git push --delete origin release
