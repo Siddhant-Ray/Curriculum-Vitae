@@ -6,6 +6,13 @@ on:
 jobs:
   build_latex:
     runs-on: ubuntu-latest
+    # Set permissions for the GITHUB_TOKEN
+    permissions:
+      contents: write          # Allows pushing changes to the repository
+      pull-requests: write     # Allows creating and updating PRs
+      issues: write            # Allows commenting on and modifying issues
+      actions: read            # Allows reading workflow runs
+      repository-projects: read # Allows reading project boards
     steps:
       - name: Set up Git repository
         uses: actions/checkout@v2
