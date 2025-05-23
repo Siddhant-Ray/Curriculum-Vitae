@@ -4,7 +4,10 @@ This repository contains the most recently updated versions of my CV.
 
 My full CV and also a single page resume can be downloaded here:
 - [CV](https://github.com/Siddhant-Ray/Curriculum-Vitae/releases/latest/download/cv.pdf) 
-- [Resume](https://github.com/Siddhant-Ray/Curriculum-Vitae/releases/latest/download/resume.pdf) 
+- <strike> [Resume](https://github.com/Siddhant-Ray/Curriculum-Vitae/releases/latest/download/resume.pdf) </strike> Outdated content
+
+⚠️ **Note:** My one-page resume content is outdated, I just keep the artefact for others to reuse the workflow and check correctness.
+
 
 ## Reusing the LaTex templates:
 
