@@ -579,7 +579,7 @@ FUNCTION {article}
   crossref missing$
     { journal emphasize "journal" output.check
       format.vol.num.pages output
-      format.date "year" output.check
+      % format.date "year" output.check
     }
     { format.article.crossref output.nonnull
       format.pages output
@@ -616,7 +616,7 @@ FUNCTION {book}
     }
   if$
   format.edition output
-  format.date "year" output.check
+  % format.date "year" output.check
   new.block
   note output
   fin.entry
@@ -664,7 +664,7 @@ FUNCTION {inbook}
     }
   if$
   format.edition output
-  format.date "year" output.check
+  % format.date "year" output.check
   new.block
   note output
   fin.entry
@@ -685,7 +685,7 @@ FUNCTION {incollection}
       publisher "publisher" output.check
       address output
       format.edition output
-      format.date "year" output.check
+      % format.date "year" output.check
     }
     { format.incoll.inproc.crossref output.nonnull
       format.chapter.pages output
@@ -711,10 +711,10 @@ FUNCTION {inproceedings}
         { organization publisher new.sentence.checkb
           organization output
           publisher output
-          format.date "year" output.check
+          % format.date "year" output.check
         }
         { address output.nonnull
-          format.date "year" output.check
+          % format.date "year" output.check
           new.sentence
           organization output
           publisher output
@@ -775,7 +775,7 @@ FUNCTION {mastersthesis}
   "Master's thesis" format.thesis.type output.nonnull
   school "school" output.check
   address output
-  format.date "year" output.check
+  % format.date "year" output.check
   new.block
   note output
   fin.entry
@@ -804,7 +804,7 @@ FUNCTION {phdthesis}
   "PhD thesis" format.thesis.type output.nonnull
   school "school" output.check
   address output
-  format.date "year" output.check
+  % format.date "year" output.check
   new.block
   note output
   fin.entry
@@ -828,10 +828,10 @@ FUNCTION {proceedings}
         }
       if$
       publisher output
-      format.date "year" output.check
+      % format.date "year" output.check
     }
     { address output.nonnull
-      format.date "year" output.check
+      % format.date "year" output.check
       new.sentence
       editor empty$
         'skip$
@@ -854,7 +854,7 @@ FUNCTION {techreport}
   format.tr.number output.nonnull
   institution "institution" output.check
   address output
-  format.date "year" output.check
+  % format.date "year" output.check
   new.block
   note output
   fin.entry
