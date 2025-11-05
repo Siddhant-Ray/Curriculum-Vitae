@@ -21,7 +21,7 @@ jobs:
         with:
           run: |
             apk add make
-            make full 
+            make all 
       - name: Setup SSH
         uses: MrSquaare/ssh-setup-action@v2
         with:
