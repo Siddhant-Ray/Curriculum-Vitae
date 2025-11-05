@@ -29,6 +29,15 @@
 % \usepackage{bibentry}
 % \usepackage{natbib}
 
+\usepackage{etoolbox} % must be before \makeatletter
+
+% Load helper packages
+\makeatletter
+\newcommand{\myurl}[1]{\href{#1}{#1}}
+\newcommand{\mydoi}[1]{\href{https://doi.org/#1}{doi:#1}}
+\newcommand{\mytitle}[2]{\href{#1}{\textit{#2}}} % clickable paper title
+\makeatother
+
 % personal data
 \name{Siddhant}{Ray} 
 %\vspace{-5cm}
@@ -74,6 +83,14 @@
 % \textbf{Projets réalisés}:http://gnt.globo.com/especiais/projetos-multitelas}
 
 %\begin{multicols}{2}
+
+% Now it's safe to configure hyperlink colors
+\hypersetup{
+  colorlinks=true,
+  urlcolor=blue,
+  linkcolor=blue,
+  citecolor=blue
+}
 
 \input{sections/education.tex}
 \input{sections/professionalexp.tex}
