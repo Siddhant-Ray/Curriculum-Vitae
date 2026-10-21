@@ -297,22 +297,9 @@ FUNCTION {n.dashify}
   while$
 }
 
+% Months are sorting metadata only; the CV displays years only.
 FUNCTION {format.date}
-{ year empty$
-    { month empty$
-        { "" }
-        { "there's a month but no year in " cite$ * warning$
-          month
-        }
-      if$
-    }
-    { month empty$
-        'year
-        { month " " * year * }
-      if$
-    }
-  if$
-}
+{ year field.or.null }
 
 FUNCTION {format.btitle}
 { title emphasize
@@ -1081,6 +1068,15 @@ FUNCTION {presort}
       if$
     }
   if$
+  "    "
+  *
+  % Use zero-padded numeric months (01--12); undated entries sort last
+  % within their year when the bibliography is emitted in reverse order.
+  month empty$
+    { "00" }
+    { month }
+  if$
+  *
   "    "
   *
   author field.or.null

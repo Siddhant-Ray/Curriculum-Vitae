@@ -30,9 +30,35 @@
 % \usepackage{natbib}
 
 \usepackage{etoolbox} % must be before \makeatletter
+\usepackage{fontawesome5}
+\usepackage{tikz}
+
+% Google Scholar emblem drawn as a vector to keep pdfLaTeX compatibility.
+\newcommand{\googlescholarlogo}{%
+  \begin{tikzpicture}[x=0.038em,y=0.038em,baseline=-0.12em]
+    \fill[black!65] (0,14.5) -- (12,24) -- (24,14.5) -- (12,5) -- cycle;
+    \fill[black!40] (12,7) circle[radius=7];
+    \fill[black!55] (5,7) arc[start angle=180,end angle=0,radius=7] -- cycle;
+  \end{tikzpicture}%
+}
+% Use identical row heights/depths so taller icons cannot change row spacing.
+\newcommand{\contacticon}[1]{%
+  \rule[-0.3em]{0pt}{1.3em}%
+  \makebox[1.4em][c]{\smash{#1}}\hspace{0.4em}%
+}
+\renewcommand*{\emailsymbol}{\contacticon{\faEnvelope[regular]}}
+\renewcommand*{\homepagesymbol}{\contacticon{\faGlobe}}
 
 % Load helper packages
 \makeatletter
+% Append successive entries on separate lines instead of replacing them.
+\renewcommand*{\extrainfo}[1]{%
+  \ifdefined\@extrainfo
+    \gappto\@extrainfo{\\#1}%
+  \else
+    \gdef\@extrainfo{#1}%
+  \fi
+}
 \newcommand{\myurl}[1]{\href{#1}{#1}}
 \newcommand{\mydoi}[1]{\href{https://doi.org/#1}{doi:#1}}
 \newcommand{\mytitle}[2]{\href{#1}{\textit{#2}}} % clickable paper title
@@ -41,15 +67,16 @@
 % personal data
 \name{Siddhant}{Ray} 
 %\vspace{-5cm}
-\address{Chicago, IL, USA}
+% \address{} % Omit an empty address to avoid a blank contact row.
 % optional, remove / comment the line if not wanted; the "postcode city" and and "country" arguments can be omitted or provided empty
-\phone[mobile]{+1-(773)-457-4156}  
+% \phone[mobile]{}  
 % optional, remove / comment the line if not wanted
 %\phone[fixed]{01234 123456}                    % optional, remove / comment the line if not wanted
 %\phone[fax]{+3~(456)~789~012}                      % optional, remove / comment the line if not wanted
 \email{siddhant.r98@gmail.com}                               % optional, remove / comment the line if not wanted
 \homepage{siddhant-ray.github.io/} % website
-\extrainfo{\href{https://github.com/Siddhant-Ray}{https://github.com/Siddhant-Ray (GitHub)}}                   
+\extrainfo{\href{https://github.com/Siddhant-Ray}{\contacticon{\faGithub}GitHub Profile}}
+\extrainfo{\href{https://scholar.google.com/citations?user=sHQFKFUAAAAJ\&hl=en}{\contacticon{\googlescholarlogo}Google Scholar Profile}}
  % optional, remove / comment the line if not wanted
                 % optional, remove / comment the line if not wanted
 %\photo[64pt][0pt]{ray.siddhant.png}                       % optional, remove / comment the line if not wanted; '64pt' is the height the picture must be resized to, 0.4pt is the thickness of the frame around it (put it to 0pt for no frame) and 'picture' is the name of the picture file
@@ -58,6 +85,11 @@
 %************************************** added <<<<<<<<<<<<<<<   
 \makeatletter
 \usepackage{xpatch}
+% Keep the contact block at the right, with its rows aligned on the left.
+\xpatchcmd{\makecvhead}
+{\begin{tabular}[b]{@{}r@{}}}
+{\begin{tabular}[b]{@{}l@{}}}
+{}{\PackageError{cv}{Could not align the contact header}{Check the moderncv header definition.}}
 \xpatchcmd{\makecvhead}
 {\includegraphics[width=\@photowidth]{\@photo}}
 {\begin{tikzpicture}\clip (0,0) circle (1.1cm);\node at (0,0) {\includegraphics[width=\@photowidth]{\@photo}};\end{tikzpicture}}
@@ -71,6 +103,7 @@
 \begin{document}
 %\begin{CJK*}{UTF8}{gbsn}                          % to typeset your resume in Chinese using CJK
 %-----       resume       ---------------------------------------------------------
+\vspace*{-14pt}
 \makecvtitle 
 \vspace{-20pt}
 %\begin{center}
