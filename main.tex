@@ -30,7 +30,7 @@
 % \usepackage{natbib}
 
 \usepackage{etoolbox} % must be before \makeatletter
-\usepackage{fontawesome5}
+% moderncv loads its compatible Font Awesome package; do not load another version.
 \usepackage{tikz}
 
 % Google Scholar emblem drawn as a vector to keep pdfLaTeX compatibility.
@@ -46,8 +46,8 @@
   \rule[-0.3em]{0pt}{1.3em}%
   \makebox[1.4em][c]{\smash{#1}}\hspace{0.4em}%
 }
-\renewcommand*{\emailsymbol}{\contacticon{\faEnvelope[regular]}}
-\renewcommand*{\homepagesymbol}{\contacticon{\faGlobe}}
+\renewcommand*{\emailsymbol}{\contacticon{\faIcon[regular]{envelope}}}
+\renewcommand*{\homepagesymbol}{\contacticon{\faIcon{globe}}}
 
 % Load helper packages
 \makeatletter
@@ -75,7 +75,7 @@
 %\phone[fax]{+3~(456)~789~012}                      % optional, remove / comment the line if not wanted
 \email{siddhant.r98@gmail.com}                               % optional, remove / comment the line if not wanted
 \homepage{siddhant-ray.github.io/} % website
-\extrainfo{\href{https://github.com/Siddhant-Ray}{\contacticon{\faGithub}GitHub Profile}}
+\extrainfo{\href{https://github.com/Siddhant-Ray}{\contacticon{\faIcon{github}}GitHub Profile}}
 \extrainfo{\href{https://scholar.google.com/citations?user=sHQFKFUAAAAJ\&hl=en}{\contacticon{\googlescholarlogo}Google Scholar Profile}}
  % optional, remove / comment the line if not wanted
                 % optional, remove / comment the line if not wanted
