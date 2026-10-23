@@ -1,66 +1,57 @@
 # Curriculum-Vitae
 
-This repository contains the most recently updated versions of my CV.
+This repository contains my current CV and one-page resume:
 
-My full CV and also a single page resume can be downloaded here:
-- [CV](https://github.com/Siddhant-Ray/Curriculum-Vitae/releases/latest/download/cv.pdf) 
-- <strike> [Resume](https://github.com/Siddhant-Ray/Curriculum-Vitae/releases/latest/download/resume.pdf) </strike> Outdated content
+- [Full CV (PDF)](https://github.com/Siddhant-Ray/Curriculum-Vitae/releases/latest/download/cv.pdf): two-page CV.
+- [Resume (PDF)](https://github.com/Siddhant-Ray/Curriculum-Vitae/releases/latest/download/resume.pdf): one-page, two-column resume.
 
-⚠️ **Note:** My one-page resume content is outdated, I just keep the artefact for others to reuse the workflow and check correctness.
+## Sources and content
 
+[`main.tex`](main.tex) builds `cv.pdf`; [`resume.tex`](resume.tex) builds
+`resume.pdf`. Both use the same Latin Modern serif typography from
+[`styles/cv-preamble.tex`](styles/cv-preamble.tex), contact header, and content
+files in [`sections/`](sections/).
 
-## Reusing the LaTex templates:
+Publications are automatically populated from [`cv.bib`](cv.bib) using
+[`styles/plainyrrev.bst`](styles/plainyrrev.bst), sorted newest first by year
+and month, with only years displayed. Titles are bold and linked, the author's
+name is underlined, and venues appear below the author lists. Resume-only selection and layout
+rules live in `resume.tex`.
 
-For reproducing, clone this repository. The file [`main.tex`](main.tex) defines the template for the full version, along with the commands and environments used. The actual content present is stored in TeX files located in the [sections](sections/) directory.
+## Build locally
 
-For the single page version, I use a different template, well because it just looks nicer. All the content for this is in the TeX file [`onepage.tex`](onepage.tex) and the support macros are in [`onepage.cls`](onepage.cls), along with supporting fonts in [fonts](fonts/). As the one page template uses the 
-```\fontspec``` command, it can only be compiled with ```XeLaTex```.
-
-## Compilation (local)
-The full CV uses a compact serif layout based on Jake's resume style.
-Build `cv.pdf` from `main.tex` with `make full` (or `make cv.pdf`).
-Content lives in `sections/*.tex` and `cv.bib`. Publications are regenerated
-by BibTeX, sorted newest first by year and month, with only years displayed.
-Each publication shows its bold title, authors with Siddhant Ray underlined,
-and venue. GitHub Actions builds and publishes the same `cv.pdf`.
-
-Compile all versions with:
-```sh
-make all
-```
-only the full version with 
-```sh
-make full
-```
-only the one page verision
-with course projects (default)
-```sh
-make one
-```
-only the one page verision
-with publications
-```sh
-make one-pub
-```
-
-Finally all auxiliary files can be cleaned using 
-```sh
-make clean
-```
-
-## Compilation (Docker)
-
-If there are problems with local TeX installations or with running Make (for eg on Windows), can also use Docker instead. The commands are to be respectively replaced by: 
+Install Make and a TeX Live distribution with pdfLaTeX, BibTeX, Latin Modern,
+Font Awesome 5, and the packages loaded by `styles/cv-preamble.tex`.
+A full TeX Live installation includes these dependencies. Neither document
+requires XeLaTeX or bundled font files.
 
 ```sh
-make docker-all 
-make docker-full
-make docker-one
-make docker-one-pub
+make                 # Build both cv.pdf and resume.pdf (same as make all)
+make full            # Build cv.pdf only (also: make cv.pdf)
+make resume          # Build resume.pdf only (also: make resume.pdf)
+make clean           # Remove auxiliary files, retaining the PDFs
+make clean-all       # Remove auxiliary files and both generated PDFs
 ```
 
+Each build runs pdfLaTeX, BibTeX, and two more pdfLaTeX passes to refresh
+publications and links.
 
+## Build with Docker
 
-## Generated PDFs
-GitHub Actions is used to automatically generate the PDF for both versions, using CI on every push. This is packaged a single release, pointing to the latest commit on the `master` branch,. This release creation is necessary as GitHub doesn't allow us to store binaries (unlike GitLab which is just much nicer for this). The compiled PDFs are thus available as release assests always.
+With Docker installed and running:
 
+```sh
+make docker-all      # Build both PDFs
+make docker-full     # Build cv.pdf
+make docker-resume   # Build resume.pdf
+```
+
+These targets build the image defined by [`Dockerfile`](Dockerfile) and mount
+the repository at `/cv`, leaving the generated PDFs in the local repository.
+
+## GitHub Actions
+
+[The workflow](.github/workflows/update-cv.yml) runs `make all` in a full
+TeX Live environment on pushes to `master`. It publishes `cv.pdf` and
+`resume.pdf` as assets of the latest release and copies `cv.pdf` to the
+personal website repository.

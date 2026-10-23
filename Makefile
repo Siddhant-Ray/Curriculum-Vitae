@@ -1,109 +1,47 @@
-FULL  = main
-SINGLE = onepage
+# Both documents share section files, typography, and the BibTeX database.
+.DEFAULT_GOAL := all
+PDFLATEX := pdflatex -interaction=nonstopmode -halt-on-error
 
-FNAME  = cv
-SNAME = resume
-
-# Config path
-PUBS = fonts/config/pubs.config
-
-################
-#### NATIVE ####
-################
-
-all:
-	$(MAKE) full one one-pub
-
-.PHONY: all full cv.pdf one one-pub
+.PHONY: all full resume cv.pdf resume.pdf clean clean-all
+all: full resume
 full: cv.pdf
+resume: resume.pdf
 
 cv.pdf:
-	pdflatex -interaction=nonstopmode -halt-on-error -jobname=$(FNAME) $(FULL)
-	bibtex $(FNAME)
-	pdflatex -interaction=nonstopmode -halt-on-error -jobname=$(FNAME) $(FULL)
-	pdflatex -interaction=nonstopmode -halt-on-error -jobname=$(FNAME) $(FULL)
+	$(PDFLATEX) -jobname=cv main.tex
+	bibtex cv
+	$(PDFLATEX) -jobname=cv main.tex
+	$(PDFLATEX) -jobname=cv main.tex
 
-one:
-	xelatex -jobname=$(SNAME) $(SINGLE)
-	xelatex -jobname=$(SNAME) $(SINGLE)
+resume.pdf:
+	$(PDFLATEX) resume.tex
+	bibtex resume
+	$(PDFLATEX) resume.tex
+	$(PDFLATEX) resume.tex
 
-one-pub:
-	touch $(PUBS)
-	xelatex -jobname=$(SNAME)_pub $(SINGLE)
-	bibtex $(SNAME)_pub
-	xelatex -jobname=$(SNAME)_pub $(SINGLE)
-	xelatex -jobname=$(SNAME)_pub $(SINGLE)
-	rm -f $(PUBS)
-
-.PHONY: clean	
 clean:
-	rm -f *.dvi *.log *.aux *.bbl *.blg *.toc *.lof *.lot *.cb *.~ *.out *.fdb_latexmk *.fls
+	rm -f *.dvi *.log *.aux *.bbl *.blg *.toc *.lof *.lot *.cb *.~ *.out *.fdb_latexmk *.fls *.synctex.gz *.bcf *.run.xml *-blx.bib
 	rm -f sections/*.aux
-	
-.PHONY: clean-all
+
 clean-all: clean
-	rm -f *.pdf
+	rm -f cv.pdf resume.pdf
 
-################
-#### Docker ####
-################
-
-# Docker command (sudo if needed)
+# Mount the workspace so generated PDFs remain available on the host.
 DOCKER-CMD := ./docker.sh
-
-# Current directory
-CVDIR := $$(pwd)
-
-# Docker image
-IMAGE := ethsrilab/latex-plus:version-4.0
-
-# Docker container name
 CONTAINER := cv-container
 
-# Build docker image from Dockerfile
-BUILD := $(DOCKER-CMD) build \
- 		-t $(CONTAINER) .
+.PHONY: docker-build docker-run docker-all docker-full docker-resume
+docker-build:
+	$(DOCKER-CMD) build -t $(CONTAINER) .
 
-# Run docker container
-RUN := $(DOCKER-CMD) run \
-		-it \
-		--name $(CONTAINER) \
-		$(CONTAINER)
+docker-run: docker-build
+	$(DOCKER-CMD) run --rm -it -v "$(CURDIR):/cv" $(CONTAINER)
 
-# Launch a docker container using the image, which will provide a shell in the container
-.PHONY: docker-run
-docker-run: clean-container
-	$(BUILD)
-	$(RUN)
+docker-all: docker-build
+	$(DOCKER-CMD) run --rm -v "$(CURDIR):/cv" $(CONTAINER) make all
 
-# Check for updates and remove the created docker container
-.PHONY: clean-container
-clean-container:
-	$(DOCKER-CMD) pull $(IMAGE)
-	$(DOCKER-CMD) rm /$(CONTAINER) 2>/dev/null || true
+docker-full: docker-build
+	$(DOCKER-CMD) run --rm -v "$(CURDIR):/cv" $(CONTAINER) make full
 
-# Run everything in the docker container
-.PHONY: docker-all
-docker-all: clean-container
-	$(RUN) make full one one-pub
-	$(DOCKER-CMD) cp $(CONTAINER):/cv/cv.pdf $(CVDIR)/cv.pdf
-	$(DOCKER-CMD) cp $(CONTAINER):/cv/resume.pdf $(CVDIR)/resume.pdf
-	$(DOCKER-CMD) cp $(CONTAINER):/cv/resume_pub.pdf $(CVDIR)/resume_pub.pdf
-
-# Make full CV in the docker container
-.PHONY: docker-full
-docker-full: clean-container
-	$(RUN) make full
-	$(DOCKER-CMD) cp $(CONTAINER):/cv/cv.pdf $(CVDIR)/cv.pdf
-
-# Make single page CV in the docker container
-.PHONY: docker-one
-docker-one: clean-container
-	$(RUN) make one
-	$(DOCKER-CMD) cp $(CONTAINER):/cv/resume.pdf $(CVDIR)/resume.pdf
-
-# Make single page CV with publications in the docker container
-.PHONY: docker-one-pub
-docker-one-pub: clean-container
-	$(RUN) make one-pub
-	$(DOCKER-CMD) cp $(CONTAINER):/cv/resume_pub.pdf $(CVDIR)/resume_pub.pdf
+docker-resume: docker-build
+	$(DOCKER-CMD) run --rm -v "$(CURDIR):/cv" $(CONTAINER) make resume

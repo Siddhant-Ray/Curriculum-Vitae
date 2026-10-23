@@ -1,0 +1,116 @@
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[margin=1.25cm]{geometry}
+\usepackage{microtype}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{etoolbox}
+\usepackage{needspace}
+\usepackage{fontawesome5}
+\usepackage{tikz}
+\usepackage[hidelinks]{hyperref}
+\input{glyphtounicode}
+\pdfgentounicode=1
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\setlength{\tabcolsep}{0pt}
+\raggedbottom
+% Keep descriptions and publications close to body size in the compact layout.
+\renewcommand{\small}{\fontsize{9.5}{11}\selectfont}
+\urlstyle{same}
+\titleformat{\section}{\large\scshape}{}{0pt}{}[\titlerule]
+\titlespacing*{\section}{0pt}{9pt}{4pt}
+% Reserve space for each heading and its first entry.
+\AddToHook{cmd/section/before}{\Needspace{5\baselineskip}}
+\setlist[itemize]{leftmargin=1.2em,label=\textbullet,itemsep=1pt,topsep=2pt,parsep=0pt,partopsep=0pt}
+
+% Vector Google Scholar artwork and contact labels.
+\newcommand{\googlescholarlogo}{%
+  \begin{tikzpicture}[x=0.038em,y=0.038em,baseline=-0.12em]
+    \fill[black!65] (0,14.5) -- (12,24) -- (24,14.5) -- (12,5) -- cycle;
+    \fill[black!40] (12,7) circle[radius=7];
+    \fill[black!55] (5,7) arc[start angle=180,end angle=0,radius=7] -- cycle;
+  \end{tikzpicture}%
+}
+\newcommand{\contacticon}[1]{\makebox[1.3em][c]{#1}\hspace{0.25em}}
+\newcommand{\myurl}[1]{\href{#1}{#1}}
+\newcommand{\mydoi}[1]{\href{https://doi.org/#1}{doi:#1}}
+\newcommand{\mytitle}[2]{\href{#1}{\textbf{#2}}}
+
+% Compatibility with the existing content files; only presentation changes.
+\newif\ifcompactentries
+\newif\ifexperienceentries
+\newcommand{\entryheading}[2]{%
+  \begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}X@{\hspace{1em}}r@{}}
+    #1 & #2
+  \end{tabularx}\par
+}
+\newcommand{\cventry}[7][1pt]{%
+  \par\needspace{2\baselineskip}%
+  \ifboolexpr{test {\ifstrequal{#2}{Programming}} or test {\ifstrequal{#2}{Software}} or test {\ifstrequal{#2}{Frameworks}}}
+    {\textbf{#2}\quad #3\par}
+    {\ifcompactentries
+       \entryheading{\textbf{#3}%
+         \ifstrempty{#4}{}{, \textit{#4}}%
+         \ifstrempty{#5}{}{, #5}%
+         \ifstrempty{#6}{}{, #6}}{#2}%
+     \else
+     \ifexperienceentries
+     \entryheading{\textbf{#4}}{#2}%
+     \textit{#3}%
+     \ifstrempty{#5}{}{, #5}%
+     \ifstrempty{#6}{}{, #6}\par
+     \else
+     \entryheading{\textbf{#3}}{#2}%
+     \ifstrempty{#4}{}{\textit{#4}}%
+     \ifstrempty{#5}{}{\ifstrempty{#4}{}{, }#5}%
+     \ifstrempty{#6}{}{, #6}%
+     \ifboolexpr{not test {\ifstrempty{#4}} or not test {\ifstrempty{#5}} or not test {\ifstrempty{#6}}}{\par}{}%
+     \fi
+     \fi
+     \ifstrempty{#7}{}{{\small #7\par}}}%
+  \addvspace{#1}%
+}
+% The shared BibTeX style emits one cvitem per publication, newest first.
+% General dated rows (also used by the shared projects section).
+\newcommand{\cvitem}[3][0pt]{%
+  \par\addvspace{1pt}\needspace{4\baselineskip}%
+  \entryheading{\small #3}{#2}%
+  \addvspace{#1}%
+}
+\renewcommand{\newblock}{\par\nobreak}
+% Omit the introductory "In" supplied by BibTeX for conference venues.
+\ExplSyntaxOn
+\NewDocumentCommand{\publicationvenue}{m}{
+  \tl_set:Nn \l_tmpa_tl {#1}
+  \regex_replace_once:nnN {\A\s*In\s+} {} \l_tmpa_tl
+  \tl_use:N \l_tmpa_tl
+}
+\ExplSyntaxOff
+
+% Join separately marked first and last names before applying one underline.
+\newcommand{\publicationauthors}[1]{%
+  \begingroup
+  \def\authorlist{#1}%
+  \patchcmd{\authorlist}{\textbf{Siddhant} \textbf{Ray}}{\textbf{Siddhant Ray}}{}{}%
+  \let\textbf\underline
+  \authorlist
+  \endgroup
+}
+% The shared style emits authors, title, then venue separated by newblock.
+% Reorder those blocks for this layout without editing generated .bbl files.
+\long\def\publicationblocks#1\newblock#2\newblock#3\publicationend{%
+  {\bfseries #2}\par\nobreak
+  \publicationauthors{#1}\par\nobreak
+  \publicationvenue{#3}%
+}
+\newcommand{\publicationitem}[3][0pt]{%
+  \par\addvspace{3pt}\needspace{4\baselineskip}%
+  \entryheading{\small\publicationblocks#3\publicationend}{#2}%
+  \addvspace{#1}%
+}
+
