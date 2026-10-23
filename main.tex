@@ -1,39 +1,36 @@
-%% start of file `template.tex'.
-% This work may be distributed and/or modified under the
-% conditions of the LaTeX Project Public License version 1.3c,
-% available at http://www.latex-project.org/lppl/.
-
-
-\documentclass[11pt,a4paper,sans]{moderncv}        % possible options include font size ('10pt', '11pt' and '12pt'), paper size ('a4paper', 'letterpaper', 'a5paper', 'legalpaper', 'executivepaper' and 'landscape') and font family ('sans' and 'roman')
-
-% modern themes
-\moderncvstyle{classic}                            % style options are 'casual' (default), 'classic', 'oldstyle' and 'banking'
-\moderncvcolor{black}                                % color options 'blue' (default), 'orange', 'green', 'red', 'purple', 'grey' and 'black'
-%\renewcommand{\familydefault}{\sfdefault}         % to set the default font; use '\sfdefault' for the default sans serif font, '\rmdefault' for the default roman one, or any tex font name
-\nopagenumbers{}                                  % uncomment to suppress automatic page numbering for CVs longer than one page
-
-% character encoding
-\usepackage[utf8]{inputenc}                       % if you are not using xelatex ou lualatex, replace by the encoding you are using
-%\usepackage{CJKutf8}                              % if you need to use CJK to typeset your resume in Chinese, Japanese or Korean
-\usepackage{multicol}
-% adjust the page margins
-%\usepackage[scale=0.8]{geometry}
- \usepackage[left=1.2cm, right=1.2cm, top=0.65cm, bottom=1.1cm]{geometry}
-%\setlength{\hintscolumnwidth}{3cm}                % if you want to change the width of the column with the dates
-%\setlength{\makecvheadnamewidth}{10cm}           % for the 'classic' style, if you want to force the width allocated to your name and avoid line breaks. be careful though, the length is normally calculated to avoid any overlap with your personal info; use this at your own typographical risks...
-\usepackage{anyfontsize}
-\usepackage{import}
-%\usepackage{hyperref}
-
-%% Different bibliography styles
-% \usepackage{bibentry}
-% \usepackage{natbib}
-
-\usepackage{etoolbox} % must be before \makeatletter
-% moderncv loads its compatible Font Awesome package; do not load another version.
+% Full CV: serif layout with shared section content and BibTeX publications.
+\documentclass[10pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[margin=1.25cm]{geometry}
+\usepackage{microtype}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{etoolbox}
+\usepackage{needspace}
+\usepackage{fontawesome5}
 \usepackage{tikz}
+\usepackage[hidelinks]{hyperref}
+\input{glyphtounicode}
+\pdfgentounicode=1
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\setlength{\tabcolsep}{0pt}
+\raggedbottom
+% Keep descriptions and publications close to body size in the compact layout.
+\renewcommand{\small}{\fontsize{9.5}{11}\selectfont}
+\urlstyle{same}
+\titleformat{\section}{\large\scshape}{}{0pt}{}[\titlerule]
+\titlespacing*{\section}{0pt}{9pt}{4pt}
+% Reserve space for each heading and its first entry.
+\AddToHook{cmd/section/before}{\Needspace{5\baselineskip}}
+\setlist[itemize]{leftmargin=1.2em,label=\textbullet,itemsep=1pt,topsep=2pt,parsep=0pt,partopsep=0pt}
 
-% Google Scholar emblem drawn as a vector to keep pdfLaTeX compatibility.
+% Vector Google Scholar artwork and contact labels.
 \newcommand{\googlescholarlogo}{%
   \begin{tikzpicture}[x=0.038em,y=0.038em,baseline=-0.12em]
     \fill[black!65] (0,14.5) -- (12,24) -- (24,14.5) -- (12,5) -- cycle;
@@ -41,93 +38,105 @@
     \fill[black!55] (5,7) arc[start angle=180,end angle=0,radius=7] -- cycle;
   \end{tikzpicture}%
 }
-% Use identical row heights/depths so taller icons cannot change row spacing.
-\newcommand{\contacticon}[1]{%
-  \rule[-0.3em]{0pt}{1.3em}%
-  \makebox[1.4em][c]{\smash{#1}}\hspace{0.4em}%
-}
-\renewcommand*{\emailsymbol}{\contacticon{\faIcon[regular]{envelope}}}
-\renewcommand*{\homepagesymbol}{\contacticon{\faIcon{globe}}}
-
-% Load helper packages
-\makeatletter
-% Append successive entries on separate lines instead of replacing them.
-\renewcommand*{\extrainfo}[1]{%
-  \ifdefined\@extrainfo
-    \gappto\@extrainfo{\\#1}%
-  \else
-    \gdef\@extrainfo{#1}%
-  \fi
-}
+\newcommand{\contacticon}[1]{\makebox[1.3em][c]{#1}\hspace{0.25em}}
 \newcommand{\myurl}[1]{\href{#1}{#1}}
 \newcommand{\mydoi}[1]{\href{https://doi.org/#1}{doi:#1}}
-\newcommand{\mytitle}[2]{\href{#1}{\textit{#2}}} % clickable paper title
-\makeatother
+\newcommand{\mytitle}[2]{\href{#1}{\textbf{#2}}}
 
-% personal data
-\name{Siddhant}{Ray} 
-%\vspace{-5cm}
-% \address{} % Omit an empty address to avoid a blank contact row.
-% optional, remove / comment the line if not wanted; the "postcode city" and and "country" arguments can be omitted or provided empty
-% \phone[mobile]{}  
-% optional, remove / comment the line if not wanted
-%\phone[fixed]{01234 123456}                    % optional, remove / comment the line if not wanted
-%\phone[fax]{+3~(456)~789~012}                      % optional, remove / comment the line if not wanted
-\email{siddhant.r98@gmail.com}                               % optional, remove / comment the line if not wanted
-\homepage{siddhant-ray.github.io/} % website
-\extrainfo{\href{https://github.com/Siddhant-Ray}{\contacticon{\faIcon{github}}GitHub Profile}}
-\extrainfo{\href{https://scholar.google.com/citations?user=sHQFKFUAAAAJ\&hl=en}{\contacticon{\googlescholarlogo}Google Scholar Profile}}
- % optional, remove / comment the line if not wanted
-                % optional, remove / comment the line if not wanted
-%\photo[64pt][0pt]{ray.siddhant.png}                       % optional, remove / comment the line if not wanted; '64pt' is the height the picture must be resized to, 0.4pt is the thickness of the frame around it (put it to 0pt for no frame) and 'picture' is the name of the picture file
-%\quote{Some quote}  % optional, remove / comment the line if not wanted
+% Compatibility with the existing content files; only presentation changes.
+\newif\ifcompactentries
+\newif\ifexperienceentries
+\newcommand{\entryheading}[2]{%
+  \begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}X@{\hspace{1em}}r@{}}
+    #1 & #2
+  \end{tabularx}\par
+}
+\newcommand{\cventry}[7][1pt]{%
+  \par\needspace{2\baselineskip}%
+  \ifboolexpr{test {\ifstrequal{#2}{Programming}} or test {\ifstrequal{#2}{Software}} or test {\ifstrequal{#2}{Frameworks}}}
+    {\textbf{#2}\quad #3\par}
+    {\ifcompactentries
+       \entryheading{\textbf{#3}%
+         \ifstrempty{#4}{}{, \textit{#4}}%
+         \ifstrempty{#5}{}{, #5}%
+         \ifstrempty{#6}{}{, #6}}{#2}%
+     \else
+     \ifexperienceentries
+     \entryheading{\textbf{#4}}{#2}%
+     \textit{#3}%
+     \ifstrempty{#5}{}{, #5}%
+     \ifstrempty{#6}{}{, #6}\par
+     \else
+     \entryheading{\textbf{#3}}{#2}%
+     \ifstrempty{#4}{}{\textit{#4}}%
+     \ifstrempty{#5}{}{\ifstrempty{#4}{}{, }#5}%
+     \ifstrempty{#6}{}{, #6}%
+     \ifboolexpr{not test {\ifstrempty{#4}} or not test {\ifstrempty{#5}} or not test {\ifstrempty{#6}}}{\par}{}%
+     \fi
+     \fi
+     \ifstrempty{#7}{}{{\small #7\par}}}%
+  \addvspace{#1}%
+}
+% The shared BibTeX style emits one cvitem per publication, newest first.
+% General dated rows (also used by the shared projects section).
+\newcommand{\cvitem}[3][0pt]{%
+  \par\addvspace{1pt}\needspace{4\baselineskip}%
+  \entryheading{\small #3}{#2}%
+  \addvspace{#1}%
+}
+\renewcommand{\newblock}{\par\nobreak}
+% Omit the introductory "In" supplied by BibTeX for conference venues.
+\ExplSyntaxOn
+\NewDocumentCommand{\publicationvenue}{m}{
+  \tl_set:Nn \l_tmpa_tl {#1}
+  \regex_replace_once:nnN {\A\s*In\s+} {} \l_tmpa_tl
+  \tl_use:N \l_tmpa_tl
+}
+\ExplSyntaxOff
 
-%************************************** added <<<<<<<<<<<<<<<   
-\makeatletter
-\usepackage{xpatch}
-% Keep the contact block at the right, with its rows aligned on the left.
-\xpatchcmd{\makecvhead}
-{\begin{tabular}[b]{@{}r@{}}}
-{\begin{tabular}[b]{@{}l@{}}}
-{}{\PackageError{cv}{Could not align the contact header}{Check the moderncv header definition.}}
-\xpatchcmd{\makecvhead}
-{\includegraphics[width=\@photowidth]{\@photo}}
-{\begin{tikzpicture}\clip (0,0) circle (1.1cm);\node at (0,0) {\includegraphics[width=\@photowidth]{\@photo}};\end{tikzpicture}}
-{}{}
-\makeatother
-%************************************** 
-
-%----------------------------------------------------------------------------------
-%            content
-%----------------------------------------------------------------------------------
-\begin{document}
-%\begin{CJK*}{UTF8}{gbsn}                          % to typeset your resume in Chinese using CJK
-%-----       resume       ---------------------------------------------------------
-\vspace*{-14pt}
-\makecvtitle 
-\vspace{-20pt}
-%\begin{center}
-    %I focus on learning, understanding and analyzing advanced engineering concepts in depth. My main areas of interest are machine learning, computer networks and distributed computing algorithms.  I am also enthusiastic about cloud computing and blockchain. I have a strong mathematical and programming background, with a keen interest to apply theoretical concepts learnt for solving practical problems.
-%\end{center}
-
-%\vspace{-20pt}
-% { \textbf{Expertise}: Marketing online et offline, Coordination des projets, Branding, Merchandising.\\
-% \textbf{Projets réalisés}:http://gnt.globo.com/especiais/projetos-multitelas}
-
-%\begin{multicols}{2}
-
-% Now it's safe to configure hyperlink colors
-\hypersetup{
-  colorlinks=true,
-  urlcolor=blue,
-  linkcolor=blue,
-  citecolor=blue
+% Join separately marked first and last names before applying one underline.
+\newcommand{\publicationauthors}[1]{%
+  \begingroup
+  \def\authorlist{#1}%
+  \patchcmd{\authorlist}{\textbf{Siddhant} \textbf{Ray}}{\textbf{Siddhant Ray}}{}{}%
+  \let\textbf\underline
+  \authorlist
+  \endgroup
+}
+% The shared style emits authors, title, then venue separated by newblock.
+% Reorder those blocks for this layout without editing generated .bbl files.
+\long\def\publicationblocks#1\newblock#2\newblock#3\publicationend{%
+  {\bfseries #2}\par\nobreak
+  \publicationauthors{#1}\par\nobreak
+  \publicationvenue{#3}%
+}
+\newcommand{\publicationitem}[3][0pt]{%
+  \par\addvspace{3pt}\needspace{4\baselineskip}%
+  \entryheading{\small\publicationblocks#3\publicationend}{#2}%
+  \addvspace{#1}%
 }
 
+\begin{document}
+{\centering
+  {\fontsize{28}{31}\selectfont\bfseries Siddhant Ray}\par
+  \vspace{2pt}
+  {\small
+  \href{mailto:siddhant.r98@gmail.com}{\contacticon{\faIcon[regular]{envelope}}siddhant.r98@gmail.com}\quad
+  \href{https://siddhant-ray.github.io/}{\contacticon{\faIcon{globe}}siddhant-ray.github.io/}\quad
+  \href{https://github.com/Siddhant-Ray}{\contacticon{\faIcon{github}}GitHub Profile}\quad
+  \href{https://scholar.google.com/citations?user=sHQFKFUAAAAJ\&hl=en}{\contacticon{\googlescholarlogo}Google Scholar Profile}}
+\par}
+
 \input{sections/education.tex}
+\experienceentriestrue
 \input{sections/professionalexp.tex}
-% \input{sections/researchexp.tex}
+\experienceentriesfalse
+\begingroup
+\let\cvitem\publicationitem
 \input{sections/publications.tex}
+\endgroup
+% Short entries use one row, while education and experience keep two levels.
+\compactentriestrue
 \input{sections/awards.tex}
 \input{sections/patents.tex}
 \input{sections/talks.tex}
@@ -135,11 +144,4 @@
 \input{sections/teaching.tex}
 \input{sections/selectedprojects.tex}
 \input{sections/skills.tex}
-% \input{sections/courses.tex}
-% \input{sections/leadership.tex}
-
-
 \end{document}
-
-
-%% end of file `template.tex'.

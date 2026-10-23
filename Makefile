@@ -1,5 +1,3 @@
-
-NOTE  = !! change the next line to fit your filename; no spaces at file name end !!
 FULL  = main
 SINGLE = onepage
 
@@ -8,20 +6,22 @@ SNAME = resume
 
 # Config path
 PUBS = fonts/config/pubs.config
-CP = fonts/config/cp.config
 
 ################
 #### NATIVE ####
 ################
 
 all:
-	make full one one-pub
+	$(MAKE) full one one-pub
 
-full:
-	pdflatex -jobname=$(FNAME) $(FULL)
+.PHONY: all full cv.pdf one one-pub
+full: cv.pdf
+
+cv.pdf:
+	pdflatex -interaction=nonstopmode -halt-on-error -jobname=$(FNAME) $(FULL)
 	bibtex $(FNAME)
-	pdflatex -jobname=$(FNAME) $(FULL)
-	pdflatex -jobname=$(FNAME) $(FULL)
+	pdflatex -interaction=nonstopmode -halt-on-error -jobname=$(FNAME) $(FULL)
+	pdflatex -interaction=nonstopmode -halt-on-error -jobname=$(FNAME) $(FULL)
 
 one:
 	xelatex -jobname=$(SNAME) $(SINGLE)

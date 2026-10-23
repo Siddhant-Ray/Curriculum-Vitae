@@ -17,6 +17,13 @@ For the single page version, I use a different template, well because it just lo
 ```\fontspec``` command, it can only be compiled with ```XeLaTex```.
 
 ## Compilation (local)
+The full CV uses a compact serif layout based on Jake's resume style.
+Build `cv.pdf` from `main.tex` with `make full` (or `make cv.pdf`).
+Content lives in `sections/*.tex` and `cv.bib`. Publications are regenerated
+by BibTeX, sorted newest first by year and month, with only years displayed.
+Each publication shows its bold title, authors with Siddhant Ray underlined,
+and venue. GitHub Actions builds and publishes the same `cv.pdf`.
+
 Compile all versions with:
 ```sh
 make all
