@@ -23,7 +23,7 @@
   \addvspace{#1}%
 }
 \long\def\publicationblocks#1\newblock#2\newblock#3\publicationend{%
-  \entryheading{\bfseries #2}{{\fontsize{7.5}{9}\selectfont\publicationyear}}%
+  \entryheading{\bfseries\publicationtitle{#2}}{{\fontsize{7.5}{9}\selectfont\publicationyear}}%
   \publicationauthors{#1}\par\nobreak
   \publicationvenue{#3}%
 }

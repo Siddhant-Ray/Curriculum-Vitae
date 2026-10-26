@@ -39,7 +39,8 @@
 \newcommand{\contacticon}[1]{\makebox[1.3em][c]{#1}\hspace{0.25em}}
 \newcommand{\myurl}[1]{\href{#1}{#1}}
 \newcommand{\mydoi}[1]{\href{https://doi.org/#1}{doi:#1}}
-\newcommand{\mytitle}[2]{\href{#1}{\textbf{#2}}}
+\newcommand{\iconlink}[2]{#2\nobreak\hspace{0.35em}\href{#1}{{\scriptsize\faIcon{external-link-alt}}}}
+\newcommand{\mytitle}[2]{\iconlink{#1}{\textbf{#2}}}
 
 % Compatibility with the existing content files; only presentation changes.
 \newif\ifcompactentries
@@ -85,6 +86,11 @@
 \renewcommand{\newblock}{\par\nobreak}
 % Omit the introductory "In" supplied by BibTeX for conference venues.
 \ExplSyntaxOn
+\NewDocumentCommand{\publicationtitle}{m}{
+  \tl_set:Nn \l_tmpa_tl {#1}
+  \regex_replace_once:nnN {\.\s*\Z} {} \l_tmpa_tl
+  \tl_use:N \l_tmpa_tl
+}
 \NewDocumentCommand{\publicationvenue}{m}{
   \tl_set:Nn \l_tmpa_tl {#1}
   \regex_replace_once:nnN {\A\s*In\s+} {} \l_tmpa_tl
@@ -104,7 +110,7 @@
 % The shared style emits authors, title, then venue separated by newblock.
 % Reorder those blocks for this layout without editing generated .bbl files.
 \long\def\publicationblocks#1\newblock#2\newblock#3\publicationend{%
-  {\bfseries #2}\par\nobreak
+  {\bfseries\publicationtitle{#2}}\par\nobreak
   \publicationauthors{#1}\par\nobreak
   \publicationvenue{#3}%
 }

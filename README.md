@@ -14,7 +14,7 @@ files in [`sections/`](sections/).
 
 Publications are automatically populated from [`cv.bib`](cv.bib) using
 [`styles/plainyrrev.bst`](styles/plainyrrev.bst), sorted newest first by year
-and month, with only years displayed. Titles are bold and linked, the author's
+and month, with only years displayed. Titles are bold with a clickable external-link icon, the author's
 name is underlined, and venues appear below the author lists. Resume-only selection and layout
 rules live in `resume.tex`.
 
