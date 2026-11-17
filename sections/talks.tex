@@ -1,7 +1,18 @@
-\section{Talks}
+\section{Selected Talks}
 
-\cventry{April 2026}{Seminar Talk}{\iconlink{https://naisslab.github.io/}{NAISS Lab Seminar}}{HKU}{}{}
-\cventry{Nov 2025}{Seminar Talk}{\iconlink{https://systems-seminar-uiuc.github.io/fall25/}{Systems Research Seminar}}{UIUC}{}{}
-\cventry{Nov 2025}{Guest Lecture}{\iconlink{https://cseweb.ucsd.edu/~yiying/cse291a-fall25/reading/}{Systems for LLMs and AI Agents Class}}{UCSD}{}{}
-\cventry{Aug 2025}{PhD Research Talk}{Networking Research Group}{Microsoft Research}{}{}
-\cventry{April 2024}{Lightning Talk}{Research Social}{Conviva}{}{}
+\begingroup
+% Date and location share a right-aligned column beside title and venue.
+\newcommand{\talkentry}[5]{%
+  \par\needspace{2\baselineskip}%
+  \begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}X@{\hspace{1em}}r@{}}
+    \textbf{#2} & #1 \\
+    {\fontsize{9}{10.5}\selectfont
+      \ifstrempty{#4}{\textit{(#3)}}{\iconlink{#4}{\textit{(#3)}}}} & {\fontsize{9}{10.5}\selectfont\itshape #5}
+  \end{tabularx}\par\addvspace{2pt}%
+}
+\talkentry{Nov, 2026}{An Internet of KV Caches}{Net4AI, IETF127}{https://datatracker.ietf.org/meeting/127/agenda/}{San Francisco (Virtual)}
+\talkentry{April, 2026}{METIS}{NAISS Lab Seminar, HKU}{https://naisslab.github.io/}{Hong Kong (Virtual)}
+\talkentry{Nov, 2025}{METIS}{Systems Research Seminar, UIUC}{https://systems-seminar-uiuc.github.io/fall25/}{Urbana-Champaign}
+\talkentry{Nov, 2025}{Systems for Retrieval Augmented Generation}{Systems for LLMs and AI Agents Class, UCSD}{https://cseweb.ucsd.edu/~yiying/cse291a-fall25/reading/}{San Diego (Virtual)}
+\talkentry{Aug, 2025}{PhD Research Talk}{Networking Research Group, Microsoft Research}{}{Redmond}
+\endgroup

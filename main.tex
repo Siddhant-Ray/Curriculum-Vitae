@@ -1,6 +1,10 @@
 % Full CV with shared styling and BibTeX publications.
 \documentclass[10pt,a4paper]{article}
 \input{styles/cv-preamble.tex}
+\geometry{top=1cm,bottom=1cm}
+% Keep the full CV on two pages with consistent, compact section spacing.
+\titlespacing*{\section}{0pt}{4pt}{3pt}
+\renewcommand{\arraystretch}{0.94}
 \begin{document}
 \input{sections/contact-header.tex}
 \input{sections/education.tex}
@@ -13,11 +17,25 @@
 \endgroup
 % Short entries use one row, while education and experience keep two levels.
 \compactentriestrue
+\begingroup
+% Match the talks: bold title/date, then smaller italic venue/location.
+\renewcommand{\cventry}[7][0pt]{%
+  \par\needspace{2\baselineskip}%
+  \begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}X@{\hspace{1em}}r@{}}
+    \textbf{#3} & #2 \\
+    {\fontsize{9}{10.5}\selectfont\itshape
+      (#4\ifstrempty{#5}{}{\ifstrempty{#4}{}{, }#5})}
+      & {\fontsize{9}{10.5}\selectfont\itshape #6}
+  \end{tabularx}\par\addvspace{#1}%
+}
 \input{sections/awards.tex}
+\endgroup
 \input{sections/patents.tex}
 \input{sections/talks.tex}
 \input{sections/service.tex}
 \input{sections/teaching.tex}
-\input{sections/selectedprojects.tex}
+% \input{sections/selectedprojects.tex}
+\begin{samepage}
 \input{sections/skills.tex}
+\end{samepage}
 \end{document}

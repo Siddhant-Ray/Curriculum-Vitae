@@ -69,15 +69,7 @@
    }
    \input{sections/awards.tex}}
   \par\vspace{4pt}
-  {\renewcommand{\cventry}[7][3pt]{%
-     \entryheading{\textbf{#3}}{{\fontsize{7.5}{9}\selectfont #2}}%
-     \ifstrempty{#4}{}{\textit{#4}\par}%
-     \ifstrempty{#5}{}{#5\par}%
-     \ifstrempty{#6}{}{#6\par}%
-     \ifstrempty{#7}{}{{\small #7\par}}%
-     \addvspace{#1}%
-   }
-   \input{sections/patents.tex}}
+  \input{sections/patents.tex}
 \end{minipage}}
 \typeout{Resume left height: \the\dimexpr\ht\resumeleft+\dp\resumeleft\relax}
 \typeout{Resume right height: \the\dimexpr\ht\resumeright+\dp\resumeright\relax}
