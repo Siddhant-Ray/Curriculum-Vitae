@@ -99,12 +99,15 @@
 \ExplSyntaxOff
 
 % Join separately marked first and last names before applying one underline.
+\newcommand{\publicationauthorfont}{\fontsize{9}{10.5}\selectfont}
+\newcommand{\publicationvenuefont}{\publicationauthorfont}
 \newcommand{\publicationauthors}[1]{%
   \begingroup
+  \publicationauthorfont
   \def\authorlist{#1}%
   \patchcmd{\authorlist}{\textbf{Siddhant} \textbf{Ray}}{\textbf{Siddhant Ray}}{}{}%
   \let\textbf\underline
-  \authorlist
+  \authorlist\par
   \endgroup
 }
 % The shared style emits authors, title, then venue separated by newblock.
@@ -112,10 +115,11 @@
 \long\def\publicationblocks#1\newblock#2\newblock#3\publicationend{%
   {\bfseries\publicationtitle{#2}}\par\nobreak
   \publicationauthors{#1}\par\nobreak
-  \publicationvenue{#3}%
+  {\publicationvenuefont\publicationvenue{#3}}%
 }
+\newcommand{\publicationsep}{3pt}
 \newcommand{\publicationitem}[3][0pt]{%
-  \par\addvspace{3pt}\needspace{4\baselineskip}%
+  \par\addvspace{\publicationsep}\needspace{4\baselineskip}%
   \entryheading{\small\publicationblocks#3\publicationend}{#2}%
   \addvspace{#1}%
 }
